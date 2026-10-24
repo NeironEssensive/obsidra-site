@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Obsidra — разработка сайтов, приложений, игр и Telegram-ботов под ключ</title>
+  <meta name="description" content="Obsidra — разработка полного цикла. Сайты, веб-сервисы, мобильные приложения, игры и Telegram-боты под ключ: от идеи до запуска и поддержки.">
+  <meta name="theme-color" content="#060608">
+  <link rel="canonical" href="https://obsidra.dev/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://obsidra.dev/">
+  <meta property="og:title" content="Obsidra — цифровые продукты под ключ">
+  <meta property="og:description" content="Сайты, веб-сервисы, мобильные приложения, игры и Telegram-боты. От идеи до продакшена.">
+  <meta property="og:locale" content="ru_RU">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Unbounded:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Спрайт логотипа: подключается через <use href="#mark"> -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="mark-fill" x1="6" y1="2" x2="26" y2="30" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#3b3746"/>
+        <stop offset=".55" stop-color="#131218"/>
+        <stop offset="1" stop-color="#060608"/>
+      </linearGradient>
+      <linearGradient id="mark-edge" x1="6" y1="30" x2="26" y2="2" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#ff5a1f"/>
+        <stop offset="1" stop-color="#ffb070"/>
+      </linearGradient>
+    </defs>
+    <symbol id="mark" viewBox="0 0 32 32">
+      <path d="M15 2 25.5 11 21 29.5 9 27.5 5.5 10Z" fill="url(#mark-fill)" stroke="url(#mark-edge)" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M15 2 16.5 15 25.5 11M16.5 15 21 29.5M16.5 15 9 27.5M16.5 15 5.5 10" fill="none" stroke="url(#mark-edge)" stroke-width="1" stroke-opacity=".55" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="#top" aria-label="Obsidra — на главную">
+        <svg class="logo__mark" aria-hidden="true"><use href="#mark"/></svg>
+        <span class="logo__word">OBSIDRA</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Основная навигация">
+        <a href="#services">Услуги</a>
+        <a href="#stack">Технологии</a>
+        <a href="#process">Процесс</a>
+        <a href="#faq">Вопросы</a>
+        <a class="btn btn--primary nav__cta" href="https://t.me/obsidra_dev" target="_blank" rel="noopener">Обсудить проект</a>
+      </nav>
+
+      <a class="btn btn--ghost btn--sm header__cta" href="https://t.me/obsidra_dev" target="_blank" rel="noopener">Обсудить проект</a>
+
+      <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="hero__grid" aria-hidden="true"></div>
+      <canvas class="hero__crystal" aria-hidden="true"></canvas>
+
+      <div class="container hero__inner">
+        <p class="eyebrow" data-reveal><span class="eyebrow__dot"></span>Открыты для новых проектов</p>
+
+        <h1 class="hero__title" data-reveal>
+          <span class="line">Делаем</span>
+          <span class="line">
+            <span class="rotator" data-words="сайты,приложения,игры,ботов,сервисы,API" aria-hidden="true">сайты</span>
+            <span class="sr-only">сайты, приложения, игры, Telegram-ботов и веб-сервисы</span>
+          </span>
+          <span class="line">под ключ</span>
+        </h1>
+
+        <p class="hero__lead" data-reveal>Obsidra — разработка полного цикла. Проектируем, пишем, запускаем и&nbsp;поддерживаем цифровые продукты: от лендинга до мобильного приложения и&nbsp;игры.</p>
+
+        <div class="hero__actions" data-reveal>
+          <a class="btn btn--primary" href="https://t.me/obsidra_dev" target="_blank" rel="noopener">
+            Обсудить проект
+            <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#services">Что мы делаем</a>
+        </div>
+
+        <dl class="hero__meta" data-reveal>
+          <div><dt>7</dt><dd>направлений разработки</dd></div>
+          <div><dt>1</dt><dd>команда на весь цикл</dd></div>
+          <div><dt>100%</dt><dd>кода и доступов — ваши</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ БЕГУЩАЯ СТРОКА ============ -->
+    <div class="marquee" aria-label="Технологии, с которыми мы работаем">
+      <div class="marquee__track">
+        <ul>
+          <li>Java</li><li>Spring Boot</li><li>React</li><li>Next.js</li><li>Kotlin</li><li>Flutter</li><li>Unity</li><li>Godot</li><li>PostgreSQL</li><li>Redis</li><li>Kafka</li><li>Docker</li><li>Telegram Bot API</li>
+        </ul>
+        <ul aria-hidden="true">
+          <li>Java</li><li>Spring Boot</li><li>React</li><li>Next.js</li><li>Kotlin</li><li>Flutter</li><li>Unity</li><li>Godot</li><li>PostgreSQL</li><li>Redis</li><li>Kafka</li><li>Docker</li><li>Telegram Bot API</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ============ УСЛУГИ ============ -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="kicker"><span>01</span>Услуги</p>
+          <h2 class="section__title">Всё, что нужно продукту, — <em>в&nbsp;одних руках</em></h2>
+          <p class="section__lead">Не нужно искать отдельно дизайнера, бэкендера и девопса. Берём проект целиком и&nbsp;отвечаем за&nbsp;результат.</p>
+        </div>
+
+        <div class="bento">
+          <!-- Сайты -->
+          <article class="card card--w4 card--web" data-reveal>
+            <div class="card__content">
+              <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></div>
+              <h3 class="card__title">Сайты и лендинги</h3>
+              <p class="card__text">Лендинги, корпоративные сайты и&nbsp;интернет-магазины. Быстрые, адаптивные, с&nbsp;SEO-основой и&nbsp;админкой, чтобы вы сами меняли контент без программиста.</p>
+              <ul class="tags"><li>React</li><li>Next.js</li><li>TypeScript</li><li>Tailwind CSS</li><li>Headless CMS</li></ul>
+            </div>
+            <div class="mock-browser" aria-hidden="true">
+              <div class="mock-browser__bar"><i></i><i></i><i></i><span>your-brand.ru</span></div>
+              <div class="mock-browser__body">
+                <div class="sk sk--title"></div>
+                <div class="sk sk--line"></div>
+                <div class="sk sk--line sk--short"></div>
+                <div class="sk-row"><div class="sk-btn"></div><div class="sk-btn sk-btn--ghost"></div></div>
+                <div class="sk-grid"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Боты -->
+          <article class="card card--w2" data-reveal>
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></div>
+            <h3 class="card__title">Telegram-боты и Mini&nbsp;Apps</h3>
+            <p class="card__text">Боты для записи, продаж, поддержки и&nbsp;рассылок. Mini Apps — полноценные приложения прямо внутри Telegram, с&nbsp;оплатой.</p>
+            <div class="mock-chat" aria-hidden="true">
+              <div class="msg msg--user" style="--d:0">Хочу записаться на&nbsp;стрижку</div>
+              <div class="msg msg--bot" style="--d:1">Выберите удобное время 👇</div>
+              <div class="msg-keys" style="--d:2"><span>12:00</span><span>14:30</span><span>18:00</span></div>
+            </div>
+            <ul class="tags"><li>Bot API</li><li>Java</li><li>Spring Boot</li><li>Mini Apps</li><li>Payments</li></ul>
+          </article>
+
+          <!-- Веб-сервисы -->
+          <article class="card card--w2" data-reveal>
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg></div>
+            <h3 class="card__title">Веб-сервисы и&nbsp;SaaS</h3>
+            <p class="card__text">Личные кабинеты, CRM, маркетплейсы и&nbsp;админ-панели. Продумываем роли, права доступа и&nbsp;платежи, чтобы система росла вместе с&nbsp;бизнесом.</p>
+            <div class="mock-dash" aria-hidden="true">
+              <div class="mock-dash__head"><span>Заказы за неделю</span><b>+24%</b></div>
+              <div class="mock-dash__bars">
+                <i style="--h:.38;--d:0"></i><i style="--h:.52;--d:1"></i><i style="--h:.44;--d:2"></i><i style="--h:.66;--d:3"></i><i style="--h:.58;--d:4"></i><i style="--h:.74;--d:5"></i><i style="--h:.94;--d:6"></i>
+              </div>
+            </div>
+            <ul class="tags"><li>Spring Boot</li><li>React</li><li>PostgreSQL</li><li>Redis</li></ul>
+          </article>
+
+          <!-- Мобильные -->
+          <article class="card card--w2" data-reveal>
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></div>
+            <h3 class="card__title">Мобильные приложения</h3>
+            <p class="card__text">iOS и&nbsp;Android — нативно или на&nbsp;одной кодовой базе. Помогаем с&nbsp;публикацией в&nbsp;App Store, Google Play и&nbsp;RuStore.</p>
+            <div class="mock-push" aria-hidden="true">
+              <span class="mock-push__icon"><svg><use href="#mark"/></svg></span>
+              <span class="mock-push__body"><b>Заказ уже в&nbsp;пути</b><span>Курьер будет через 15&nbsp;мин</span></span>
+              <span class="mock-push__time">сейчас</span>
+            </div>
+            <ul class="tags"><li>Kotlin</li><li>Jetpack Compose</li><li>Flutter</li></ul>
+          </article>
+
+          <!-- Игры -->
+          <article class="card card--w2" data-reveal>
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><path d="M17.3 5H6.7a4 4 0 0 0-3.96 3.43l-.73 5.1A3 3 0 0 0 7.2 16.4L9 14h6l1.8 2.4a3 3 0 0 0 5.19-2.87l-.73-5.1A4 4 0 0 0 17.3 5Z"/></svg></div>
+            <h3 class="card__title">Игры</h3>
+            <p class="card__text">Браузерные, мобильные и&nbsp;ПК-игры: промо-игры для брендов, казуальные проекты и&nbsp;инди с&nbsp;мультиплеером.</p>
+            <div class="mock-hud" aria-hidden="true">
+              <div class="mock-hud__row">
+                <span class="mock-hud__hp">HP <i></i><i></i><i></i><i class="is-off"></i></span>
+                <span>SCORE 004250</span>
+              </div>
+              <div class="mock-hud__bar"><i></i></div>
+              <div class="mock-hud__row mock-hud__row--dim"><span>LVL 07</span><span>BOSS 68%</span></div>
+            </div>
+            <ul class="tags"><li>Unity</li><li>C#</li><li>Godot</li><li>Phaser</li><li>WebGL</li></ul>
+          </article>
+
+          <!-- Бэкенд -->
+          <article class="card card--w3" data-reveal>
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></svg></div>
+            <h3 class="card__title">Бэкенд, API и&nbsp;интеграции</h3>
+            <p class="card__text">Надёжная серверная часть: REST API с&nbsp;документацией, очереди, кэширование, интеграции с&nbsp;платёжными системами, CRM и&nbsp;сторонними сервисами.</p>
+            <pre class="mock-code" aria-hidden="true"><code><span class="c-an">@PostMapping</span>(<span class="c-str">"/orders"</span>)
+<span class="c-kw">public</span> <span class="c-ty">Order</span> <span class="c-fn">create</span>(<span class="c-ty">OrderDto</span> dto) {
+    <span class="c-kw">return</span> orders.<span class="c-fn">place</span>(dto);
+}</code></pre>
+            <ul class="tags"><li>Java 21</li><li>Spring</li><li>Kafka</li><li>Redis</li><li>PostgreSQL</li><li>OpenAPI</li></ul>
+          </article>
+
+          <!-- DevOps -->
+          <article class="card card--w3" data-reveal>
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.33-6 4Z"/></svg></div>
+            <h3 class="card__title">Запуск и&nbsp;DevOps</h3>
+            <p class="card__text">Разворачиваем на&nbsp;сервере, подключаем домен, HTTPS, CI/CD и&nbsp;мониторинг. Релиз — одной кнопкой, без «а&nbsp;у&nbsp;меня локально работало».</p>
+            <div class="mock-pipe" aria-hidden="true">
+              <div class="mock-pipe__steps">
+                <span class="pipe-step" style="--s:0"><i></i>build</span>
+                <span class="pipe-line"></span>
+                <span class="pipe-step" style="--s:1"><i></i>test</span>
+                <span class="pipe-line"></span>
+                <span class="pipe-step" style="--s:2"><i></i>deploy</span>
+              </div>
+              <p class="mock-pipe__status">✓ pipeline passed · 2m 14s</p>
+            </div>
+            <ul class="tags"><li>Docker</li><li>GitLab CI/CD</li><li>GitHub Actions</li><li>Nginx</li><li>Linux</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ТЕХНОЛОГИИ ============ -->
+    <section class="section section--stack" id="stack">
+      <div class="container stack">
+        <div class="stack__intro" data-reveal>
+          <p class="kicker"><span>02</span>Технологии</p>
+          <h2 class="section__title">Стек под задачу, <em>а&nbsp;не&nbsp;задача под&nbsp;стек</em></h2>
+          <p class="section__lead">Используем проверенные технологии, на&nbsp;которых держатся крупные продукты. Проект легко поддерживать и&nbsp;развивать — даже без нас.</p>
+        </div>
+
+        <div class="terminal" data-reveal>
+          <div class="terminal__bar"><i></i><i></i><i></i><span>~/obsidra — zsh</span></div>
+          <div class="terminal__body">
+            <p class="t-cmd"><span class="t-prompt">$</span><span class="t-typed">obsidra stack --list</span></p>
+            <div class="t-row" style="--i:0"><span class="t-key">frontend</span><span class="t-val">TypeScript <b>·</b> React <b>·</b> Next.js <b>·</b> Tailwind CSS <b>·</b> Three.js</span></div>
+            <div class="t-row" style="--i:1"><span class="t-key">backend</span><span class="t-val">Java 21 <b>·</b> Spring Boot <b>·</b> Spring Security <b>·</b> Hibernate <b>·</b> REST</span></div>
+            <div class="t-row" style="--i:2"><span class="t-key">data</span><span class="t-val">PostgreSQL <b>·</b> MySQL <b>·</b> Redis <b>·</b> Kafka</span></div>
+            <div class="t-row" style="--i:3"><span class="t-key">mobile</span><span class="t-val">Kotlin <b>·</b> Jetpack Compose <b>·</b> Flutter</span></div>
+            <div class="t-row" style="--i:4"><span class="t-key">gamedev</span><span class="t-val">Unity <b>·</b> C# <b>·</b> Godot <b>·</b> Phaser <b>·</b> WebGL</span></div>
+            <div class="t-row" style="--i:5"><span class="t-key">bots</span><span class="t-val">Telegram Bot API <b>·</b> Mini Apps <b>·</b> Payments</span></div>
+            <div class="t-row" style="--i:6"><span class="t-key">devops</span><span class="t-val">Docker <b>·</b> GitLab CI/CD <b>·</b> GitHub Actions <b>·</b> Nginx <b>·</b> Linux</span></div>
+            <div class="t-row" style="--i:7"><span class="t-key">quality</span><span class="t-val">JUnit 5 <b>·</b> Mockito <b>·</b> Testcontainers <b>·</b> Swagger <b>·</b> Postman</span></div>
+            <p class="t-ok" style="--i:8">✓ 8 слоёв · стек подбирается под проект</p>
+            <p class="t-cmd t-cmd--last" style="--i:9"><span class="t-prompt">$</span><span class="t-caret"></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ПРОЦЕСС ============ -->
+    <section class="section" id="process">
+      <div class="container process">
+        <div class="process__head" data-reveal>
+          <p class="kicker"><span>03</span>Процесс</p>
+          <h2 class="section__title">Под ключ — <em>это&nbsp;так</em></h2>
+          <p class="section__lead">Шесть шагов от&nbsp;первого сообщения до&nbsp;работающего продукта. На&nbsp;каждом этапе вы знаете, что происходит и&nbsp;сколько это стоит.</p>
+        </div>
+
+        <div class="steps">
+          <span class="steps__progress" aria-hidden="true"></span>
+          <ol class="steps__list">
+            <li class="step" data-reveal>
+              <span class="step__num">01</span>
+              <div>
+                <h3>Бриф</h3>
+                <p>Созваниваемся, разбираем задачу, аудиторию и&nbsp;цели. Задаём неудобные вопросы сейчас, чтобы не&nbsp;было сюрпризов потом.</p>
+                <span class="step__out">→ понятная задача</span>
+              </div>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step__num">02</span>
+              <div>
+                <h3>Смета и&nbsp;договор</h3>
+                <p>Фиксируем объём, сроки и&nbsp;стоимость. Делим проект на&nbsp;этапы, у&nbsp;каждого — свой понятный результат.</p>
+                <span class="step__out">→ фиксированная цена</span>
+              </div>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step__num">03</span>
+              <div>
+                <h3>Прототип и&nbsp;дизайн</h3>
+                <p>Собираем прототип ключевых экранов, затем дизайн. Вы видите продукт до&nbsp;того, как написана первая строка кода.</p>
+                <span class="step__out">→ утверждённые макеты</span>
+              </div>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step__num">04</span>
+              <div>
+                <h3>Разработка</h3>
+                <p>Работаем короткими итерациями и&nbsp;показываем демо каждую неделю. Доступ к&nbsp;репозиторию — с&nbsp;первого дня.</p>
+                <span class="step__out">→ демо каждую неделю</span>
+              </div>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step__num">05</span>
+              <div>
+                <h3>Тесты и&nbsp;запуск</h3>
+                <p>Автотесты и&nbsp;ручная проверка. Разворачиваем на&nbsp;сервере, подключаем домен, HTTPS и&nbsp;CI/CD.</p>
+                <span class="step__out">→ продукт в&nbsp;продакшене</span>
+              </div>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step__num">06</span>
+              <div>
+                <h3>Поддержка</h3>
+                <p>Гарантийный период на&nbsp;исправления, дальше — развитие и&nbsp;сопровождение по&nbsp;договорённости.</p>
+                <span class="step__out">→ гарантия и&nbsp;развитие</span>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ПРИНЦИПЫ ============ -->
+    <section class="section section--tight" id="principles">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="kicker"><span>04</span>Принципы</p>
+          <h2 class="section__title">Правила, по&nbsp;которым <em>мы&nbsp;работаем</em></h2>
+        </div>
+
+        <div class="principles">
+          <div class="principle" data-reveal>
+            <span class="principle__idx">/01</span>
+            <h3>Фиксированная смета</h3>
+            <p>Цена и&nbsp;сроки согласуются до&nbsp;старта. Всё, что сверх объёма, — только после вашего «да».</p>
+          </div>
+          <div class="principle" data-reveal>
+            <span class="principle__idx">/02</span>
+            <h3>Код — ваш</h3>
+            <p>Передаём репозиторий, доступы и&nbsp;документацию. Никакой привязки к&nbsp;нам.</p>
+          </div>
+          <div class="principle" data-reveal>
+            <span class="principle__idx">/03</span>
+            <h3>Прозрачно</h3>
+            <p>Демо каждую неделю и&nbsp;доступ к&nbsp;задачам. Вы всегда знаете, на&nbsp;каком этапе проект.</p>
+          </div>
+          <div class="principle" data-reveal>
+            <span class="principle__idx">/04</span>
+            <h3>Официально</h3>
+            <p>Работаем по&nbsp;договору, на&nbsp;каждый платёж — чек. Гарантия на&nbsp;исправления после запуска.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="container faq">
+        <div class="faq__head" data-reveal>
+          <p class="kicker"><span>05</span>Вопросы</p>
+          <h2 class="section__title">Частые <em>вопросы</em></h2>
+        </div>
+
+        <div class="faq__list" data-reveal>
+          <details>
+            <summary>Сколько стоит проект?<span class="faq__icon" aria-hidden="true"></span></summary>
+            <p>Зависит от&nbsp;объёма и&nbsp;сложности. После брифа присылаем фиксированную смету с&nbsp;разбивкой по&nbsp;этапам — бесплатно и&nbsp;ни&nbsp;к&nbsp;чему не&nbsp;обязывает.</p>
+          </details>
+          <details>
+            <summary>Сколько времени займёт разработка?<span class="faq__icon" aria-hidden="true"></span></summary>
+            <p>Ориентиры: лендинг — от&nbsp;недели, Telegram-бот — от&nbsp;1–2 недель, веб-сервис или приложение — от&nbsp;месяца. Точный срок фиксируем в&nbsp;договоре.</p>
+          </details>
+          <details>
+            <summary>Как проходит оплата?<span class="faq__icon" aria-hidden="true"></span></summary>
+            <p>Поэтапно: предоплата за&nbsp;первый этап, дальше — по&nbsp;факту сдачи каждого следующего. Вы платите за&nbsp;результат, который уже видите.</p>
+          </details>
+          <details>
+            <summary>У&nbsp;меня нет ТЗ. Это проблема?<span class="faq__icon" aria-hidden="true"></span></summary>
+            <p>Нет. Составим его вместе на&nbsp;брифе — от&nbsp;вас нужна идея и&nbsp;понимание, для кого продукт.</p>
+          </details>
+          <details>
+            <summary>Можно доработать существующий проект?<span class="faq__icon" aria-hidden="true"></span></summary>
+            <p>Да. Сначала проводим аудит кода и&nbsp;инфраструктуры, потом предлагаем план работ и&nbsp;смету.</p>
+          </details>
+          <details>
+            <summary>Что будет после запуска?<span class="faq__icon" aria-hidden="true"></span></summary>
+            <p>Гарантийный период, в&nbsp;который бесплатно исправляем найденные ошибки. Дальше — поддержка и&nbsp;развитие продукта по&nbsp;договорённости.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="section section--cta" id="contact">
+      <div class="container">
+        <div class="cta" data-reveal>
+          <div class="cta__grid" aria-hidden="true"></div>
+          <h2 class="cta__title">Есть идея?<br><span class="grad">Превратим её в&nbsp;продукт.</span></h2>
+          <p class="cta__text">Расскажите о&nbsp;задаче в&nbsp;Telegram — ответим в&nbsp;течение рабочего дня, зададим пару вопросов и&nbsp;предложим решение со&nbsp;сметой.</p>
+          <a class="btn btn--primary btn--lg" href="https://t.me/obsidra_dev" target="_blank" rel="noopener">
+            <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            Написать в&nbsp;Telegram
+          </a>
+          <p class="cta__handle">@obsidra_dev</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <a class="logo" href="#top" aria-label="Obsidra — наверх">
+          <svg class="logo__mark" aria-hidden="true"><use href="#mark"/></svg>
+          <span class="logo__word">OBSIDRA</span>
+        </a>
+        <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a href="#services">Услуги</a>
+          <a href="#stack">Технологии</a>
+          <a href="#process">Процесс</a>
+          <a href="#faq">Вопросы</a>
+          <a href="https://t.me/obsidra_dev" target="_blank" rel="noopener">Telegram</a>
+        </nav>
+        <p class="footer__copy">© <span data-year>2026</span> Obsidra · obsidra.dev</p>
+      </div>
+      <p class="footer__mega" aria-hidden="true">OBSIDRA</p>
+    </div>
+  </footer>
+</body>
+</html>

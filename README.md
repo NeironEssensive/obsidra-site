@@ -1,0 +1,58 @@
+# obsidra.dev
+
+Сайт-визитка Obsidra: статический сайт без сборки — только HTML, CSS и JS.
+
+```
+index.html   — вся разметка и тексты
+styles.css   — стили (цвета и шрифты — в :root в начале файла)
+script.js    — анимации: кристалл в hero, смена слов, подсветка карточек, шаги процесса
+favicon.svg  — иконка вкладки
+```
+
+## Перед публикацией
+
+1. **Telegram.** Все кнопки ведут на [@obsidra_dev](https://t.me/obsidra_dev): ник встречается в `index.html` 6 раз.
+2. **Тексты.** Все тексты лежат в `index.html`. Ориентировочные сроки и условия описаны в блоке FAQ (`#faq`), проверьте, что они совпадают с тем, как вы работаете.
+3. **Название.** Прежде чем покупать домен и заказывать логотип, проверьте «Obsidra» в реестрах товарных знаков [ФИПС](https://www1.fips.ru/registers-web/) и [WIPO Global Brand Database](https://branddb.wipo.int/).
+
+## Локальный запуск
+
+```bash
+python -m http.server 5510
+```
+
+После запуска откройте http://localhost:5510.
+
+## Публикация на GitHub Pages (бесплатно)
+
+1. Создайте репозиторий и отправьте в него код:
+
+   ```bash
+   git init
+   git add .
+   git commit -m "Сайт-визитка Obsidra"
+   gh repo create obsidra-site --public --source=. --push
+   ```
+
+2. Включите GitHub Pages: **Settings → Pages → Build and deployment → Deploy from a branch → `main` / `(root)`**.
+   Через минуту сайт откроется по адресу `https://<ваш-логин>.github.io/obsidra-site/`.
+
+## Домен obsidra.dev
+
+Домены `.dev` продают, например, [REG.RU](https://www.reg.ru/domain/new/DEV) и [Timeweb](https://timeweb.com/ru/services/domains/dev/). Перед покупкой сверьте цену регистрации и продления.
+
+Зона `.dev` работает **только по HTTPS**: браузеры не откроют сайт по `http://`. GitHub Pages выпускает сертификат бесплатно, нужно лишь включить его (шаг 4).
+
+1. В панели регистратора добавьте DNS-записи:
+
+   | Тип   | Имя   | Значение                     |
+   |-------|-------|------------------------------|
+   | A     | @     | 185.199.108.153              |
+   | A     | @     | 185.199.109.153              |
+   | A     | @     | 185.199.110.153              |
+   | A     | @     | 185.199.111.153              |
+   | CNAME | www   | `<ваш-логин>.github.io`      |
+
+2. В репозитории: **Settings → Pages → Custom domain → `obsidra.dev` → Save**. GitHub сам добавит в репозиторий файл `CNAME`.
+3. Подождите, пока обновится DNS. Обычно это от нескольких минут до пары часов.
+4. Включите **Enforce HTTPS** в тех же настройках Pages.
