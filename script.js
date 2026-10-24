@@ -236,6 +236,7 @@
     }
 
     function draw(dt) {
+      if (!w || !h) return;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, w, h);
       const size = Math.min(w, h);
@@ -259,10 +260,15 @@
 
       // поворот: медленное вращение + наклон за курсором
       spin += dt * 0.00016;
-      const targetX = ((pointer.y / window.innerHeight) - 0.5) * 0.5;
-      const targetY = ((pointer.x / window.innerWidth) - 0.5) * 0.9;
+      // окно, открытое в фоне, может иметь нулевой размер — без защиты наклон навсегда станет NaN
+      const targetX = ((pointer.y / (window.innerHeight || 1)) - 0.5) * 0.5;
+      const targetY = ((pointer.x / (window.innerWidth || 1)) - 0.5) * 0.9;
       tilt.x += (targetX - tilt.x) * 0.05;
       tilt.y += (targetY - tilt.y) * 0.05;
+      if (!Number.isFinite(tilt.x) || !Number.isFinite(tilt.y)) {
+        tilt.x = 0;
+        tilt.y = 0;
+      }
       const ry = spin + tilt.y;
       const rx = -0.18 + tilt.x;
       const rz = 0.14;
