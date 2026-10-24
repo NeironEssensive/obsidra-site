@@ -2,6 +2,8 @@
 
 Сайт-визитка Obsidra: статический сайт без сборки — только HTML, CSS и JS.
 
+Опубликован на GitHub Pages: https://neironessensive.github.io/obsidra-site/ — каждый `git push` в `main` обновляет сайт примерно за минуту. Если меняли `styles.css` или `script.js`, увеличьте `?v=` в их подключении в `index.html`, иначе браузеры до 10 минут будут показывать старую версию из кэша.
+
 ```
 index.html   — вся разметка и тексты
 styles.css   — стили (цвета и шрифты — в :root в начале файла)
