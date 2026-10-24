@@ -14,14 +14,22 @@
   <meta property="og:description" content="Сайты, веб-сервисы, мобильные приложения, игры и Telegram-боты. От идеи до продакшена.">
   <meta property="og:locale" content="ru_RU">
 
+  <!--
+    CSP: страница грузит скрипты, стили, шрифты и картинки только с собственного домена.
+    Хеш в script-src — это хеш inline-скрипта ниже: если меняете его текст, пересчитайте хеш,
+    иначе браузер скрипт заблокирует. Подключаете сторонний сервис (аналитику, форму) — добавьте его домен сюда.
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw='; style-src 'self'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Unbounded:wght@400;500;600;700&display=swap">
+  <link rel="preload" href="fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <!-- ?v= меняйте при каждом обновлении CSS/JS, иначе браузеры до 10 минут держат старую версию из кэша -->
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="fonts/fonts.css?v=1">
+  <link rel="stylesheet" href="styles.css?v=3">
   <script>document.documentElement.classList.add('js');</script>
-  <script src="script.js?v=2" defer></script>
+  <script src="script.js?v=3" defer></script>
 </head>
 <body>
   <!-- Спрайт логотипа: подключается через <use href="#mark"> -->
@@ -152,10 +160,10 @@
             <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></div>
             <h3 class="card__title">Telegram-боты и Mini&nbsp;Apps</h3>
             <p class="card__text">Боты для записи, продаж, поддержки и&nbsp;рассылок. Mini Apps — полноценные приложения прямо внутри Telegram, с&nbsp;оплатой.</p>
-            <div class="mock-chat" aria-hidden="true">
-              <div class="msg msg--user" style="--d:0">Хочу записаться на&nbsp;стрижку</div>
-              <div class="msg msg--bot" style="--d:1">Выберите удобное время 👇</div>
-              <div class="msg-keys" style="--d:2"><span>12:00</span><span>14:30</span><span>18:00</span></div>
+            <div class="mock-chat" aria-hidden="true" data-stagger>
+              <div class="msg msg--user">Хочу записаться на&nbsp;стрижку</div>
+              <div class="msg msg--bot">Выберите удобное время 👇</div>
+              <div class="msg-keys"><span>12:00</span><span>14:30</span><span>18:00</span></div>
             </div>
             <ul class="tags"><li>Bot API</li><li>Java</li><li>Spring Boot</li><li>Mini Apps</li><li>Payments</li></ul>
           </article>
@@ -167,8 +175,8 @@
             <p class="card__text">Личные кабинеты, CRM, маркетплейсы и&nbsp;админ-панели. Продумываем роли, права доступа и&nbsp;платежи, чтобы система росла вместе с&nbsp;бизнесом.</p>
             <div class="mock-dash" aria-hidden="true">
               <div class="mock-dash__head"><span>Заказы за неделю</span><b>+24%</b></div>
-              <div class="mock-dash__bars">
-                <i style="--h:.38;--d:0"></i><i style="--h:.52;--d:1"></i><i style="--h:.44;--d:2"></i><i style="--h:.66;--d:3"></i><i style="--h:.58;--d:4"></i><i style="--h:.74;--d:5"></i><i style="--h:.94;--d:6"></i>
+              <div class="mock-dash__bars" data-stagger>
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
               </div>
             </div>
             <ul class="tags"><li>Spring Boot</li><li>React</li><li>PostgreSQL</li><li>Redis</li></ul>
@@ -221,12 +229,12 @@
             <h3 class="card__title">Запуск и&nbsp;DevOps</h3>
             <p class="card__text">Разворачиваем на&nbsp;сервере, подключаем домен, HTTPS, CI/CD и&nbsp;мониторинг. Релиз — одной кнопкой, без «а&nbsp;у&nbsp;меня локально работало».</p>
             <div class="mock-pipe" aria-hidden="true">
-              <div class="mock-pipe__steps">
-                <span class="pipe-step" style="--s:0"><i></i>build</span>
+              <div class="mock-pipe__steps" data-stagger>
+                <span class="pipe-step"><i></i>build</span>
                 <span class="pipe-line"></span>
-                <span class="pipe-step" style="--s:1"><i></i>test</span>
+                <span class="pipe-step"><i></i>test</span>
                 <span class="pipe-line"></span>
-                <span class="pipe-step" style="--s:2"><i></i>deploy</span>
+                <span class="pipe-step"><i></i>deploy</span>
               </div>
               <p class="mock-pipe__status">✓ pipeline passed · 2m 14s</p>
             </div>
@@ -247,18 +255,18 @@
 
         <div class="terminal" data-reveal>
           <div class="terminal__bar"><i></i><i></i><i></i><span>~/obsidra — zsh</span></div>
-          <div class="terminal__body">
+          <div class="terminal__body" data-stagger>
             <p class="t-cmd"><span class="t-prompt">$</span><span class="t-typed">obsidra stack --list</span></p>
-            <div class="t-row" style="--i:0"><span class="t-key">frontend</span><span class="t-val">TypeScript <b>·</b> React <b>·</b> Next.js <b>·</b> Tailwind CSS <b>·</b> Three.js</span></div>
-            <div class="t-row" style="--i:1"><span class="t-key">backend</span><span class="t-val">Java 21 <b>·</b> Spring Boot <b>·</b> Spring Security <b>·</b> Hibernate <b>·</b> REST</span></div>
-            <div class="t-row" style="--i:2"><span class="t-key">data</span><span class="t-val">PostgreSQL <b>·</b> MySQL <b>·</b> Redis <b>·</b> Kafka</span></div>
-            <div class="t-row" style="--i:3"><span class="t-key">mobile</span><span class="t-val">Kotlin <b>·</b> Jetpack Compose <b>·</b> Flutter</span></div>
-            <div class="t-row" style="--i:4"><span class="t-key">gamedev</span><span class="t-val">Unity <b>·</b> C# <b>·</b> Godot <b>·</b> Phaser <b>·</b> WebGL</span></div>
-            <div class="t-row" style="--i:5"><span class="t-key">bots</span><span class="t-val">Telegram Bot API <b>·</b> Mini Apps <b>·</b> Payments</span></div>
-            <div class="t-row" style="--i:6"><span class="t-key">devops</span><span class="t-val">Docker <b>·</b> GitLab CI/CD <b>·</b> GitHub Actions <b>·</b> Nginx <b>·</b> Linux</span></div>
-            <div class="t-row" style="--i:7"><span class="t-key">quality</span><span class="t-val">JUnit 5 <b>·</b> Mockito <b>·</b> Testcontainers <b>·</b> Swagger <b>·</b> Postman</span></div>
-            <p class="t-ok" style="--i:8">✓ 8 слоёв · стек подбирается под проект</p>
-            <p class="t-cmd t-cmd--last" style="--i:9"><span class="t-prompt">$</span><span class="t-caret"></span></p>
+            <div class="t-row"><span class="t-key">frontend</span><span class="t-val">TypeScript <b>·</b> React <b>·</b> Next.js <b>·</b> Tailwind CSS <b>·</b> Three.js</span></div>
+            <div class="t-row"><span class="t-key">backend</span><span class="t-val">Java 21 <b>·</b> Spring Boot <b>·</b> Spring Security <b>·</b> Hibernate <b>·</b> REST</span></div>
+            <div class="t-row"><span class="t-key">data</span><span class="t-val">PostgreSQL <b>·</b> MySQL <b>·</b> Redis <b>·</b> Kafka</span></div>
+            <div class="t-row"><span class="t-key">mobile</span><span class="t-val">Kotlin <b>·</b> Jetpack Compose <b>·</b> Flutter</span></div>
+            <div class="t-row"><span class="t-key">gamedev</span><span class="t-val">Unity <b>·</b> C# <b>·</b> Godot <b>·</b> Phaser <b>·</b> WebGL</span></div>
+            <div class="t-row"><span class="t-key">bots</span><span class="t-val">Telegram Bot API <b>·</b> Mini Apps <b>·</b> Payments</span></div>
+            <div class="t-row"><span class="t-key">devops</span><span class="t-val">Docker <b>·</b> GitLab CI/CD <b>·</b> GitHub Actions <b>·</b> Nginx <b>·</b> Linux</span></div>
+            <div class="t-row"><span class="t-key">quality</span><span class="t-val">JUnit 5 <b>·</b> Mockito <b>·</b> Testcontainers <b>·</b> Swagger <b>·</b> Postman</span></div>
+            <p class="t-ok">✓ 8 слоёв · стек подбирается под проект</p>
+            <p class="t-cmd t-cmd--last"><span class="t-prompt">$</span><span class="t-caret"></span></p>
           </div>
         </div>
       </div>

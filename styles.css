@@ -589,12 +589,13 @@ h1, h2, h3 {
   margin-top: 26px;
   font-size: 14px;
 }
+/* --i (порядковый номер в группе [data-stagger]) расставляет script.js */
 .msg, .msg-keys {
-  opacity: 0;
-  transform: translateY(8px);
   transition: opacity .5s var(--ease), transform .5s var(--ease);
-  transition-delay: calc(.5s + var(--d) * .45s);
+  transition-delay: calc(.5s + var(--i, 0) * .45s);
 }
+.js .msg,
+.js .msg-keys { opacity: 0; transform: translateY(8px); }
 .card.is-visible .msg,
 .card.is-visible .msg-keys { opacity: 1; transform: none; }
 .msg { max-width: 86%; padding: 9px 13px; border-radius: 14px; line-height: 1.35; }
@@ -649,10 +650,17 @@ h1, h2, h3 {
   border-radius: 4px 4px 2px 2px;
   background: linear-gradient(180deg, #2e2d38, #1a1a22);
   transform-origin: bottom;
-  transform: scaleY(.08);
   transition: transform .9s var(--ease);
-  transition-delay: calc(.4s + var(--d) * .07s);
+  transition-delay: calc(.4s + var(--i, 0) * .07s);
 }
+.mock-dash__bars i:nth-child(1) { --h: .38; }
+.mock-dash__bars i:nth-child(2) { --h: .52; }
+.mock-dash__bars i:nth-child(3) { --h: .44; }
+.mock-dash__bars i:nth-child(4) { --h: .66; }
+.mock-dash__bars i:nth-child(5) { --h: .58; }
+.mock-dash__bars i:nth-child(6) { --h: .74; }
+.mock-dash__bars i:nth-child(7) { --h: .94; }
+.js .mock-dash__bars i { transform: scaleY(.08); }
 .mock-dash__bars i:last-child {
   background: linear-gradient(180deg, var(--ember-2), var(--ember));
   box-shadow: 0 0 18px rgba(255, 90, 31, .45);
@@ -671,10 +679,9 @@ h1, h2, h3 {
   border-radius: 16px;
   background: rgba(32, 32, 42, .55);
   box-shadow: 0 20px 40px -20px rgba(0, 0, 0, .8);
-  opacity: 0;
-  transform: translateY(-10px) scale(.97);
   transition: opacity .6s var(--ease) .6s, transform .6s var(--ease) .6s;
 }
+.js .mock-push { opacity: 0; transform: translateY(-10px) scale(.97); }
 .card.is-visible .mock-push { opacity: 1; transform: none; }
 .mock-push__icon {
   display: grid;
@@ -716,9 +723,9 @@ h1, h2, h3 {
   height: 100%;
   background: repeating-linear-gradient(90deg, var(--ember) 0 10px, #ff7a3a 10px 12px);
   transform-origin: left;
-  transform: scaleX(0);
   transition: transform 1.2s var(--ease) .5s;
 }
+.js .mock-hud__bar i { transform: scaleX(0); }
 .card.is-visible .mock-hud__bar i { transform: none; }
 
 /* карточка «Бэкенд» */
@@ -763,7 +770,8 @@ h1, h2, h3 {
   border-radius: 50%;
   background: #2b2a34;
   animation: pipe 4.5s infinite;
-  animation-delay: calc(var(--s) * .9s);
+  /* шаги — 0-й, 2-й и 4-й дети группы (между ними линии) */
+  animation-delay: calc(var(--i, 0) * .45s);
 }
 .pipe-line { flex: 1; height: 1px; background: var(--line-2); }
 .mock-pipe__status { margin: 14px 0 0; font: 400 12.5px/1 var(--font-mono); color: var(--ok); }
@@ -800,19 +808,21 @@ h1, h2, h3 {
 .t-typed {
   display: inline-block;
   vertical-align: bottom;
-  width: 0;
   overflow: hidden;
   white-space: nowrap;
 }
+.js .t-typed { width: 0; }
 .terminal.is-visible .t-typed { animation: type 1s steps(20, end) .5s forwards; }
 @keyframes type { to { width: 20ch; } }
 
+/* первая строка группы — команда, поэтому строки вывода начинаются с --i: 1 */
 .t-row, .t-ok, .t-cmd--last {
-  opacity: 0;
-  transform: translateY(6px);
   transition: opacity .4s var(--ease), transform .4s var(--ease);
-  transition-delay: calc(1.6s + var(--i) * .12s);
+  transition-delay: calc(1.48s + var(--i, 0) * .12s);
 }
+.js .t-row,
+.js .t-ok,
+.js .t-cmd--last { opacity: 0; transform: translateY(6px); }
 .terminal.is-visible .t-row,
 .terminal.is-visible .t-ok,
 .terminal.is-visible .t-cmd--last { opacity: 1; transform: none; }
@@ -1172,5 +1182,5 @@ h1, h2, h3 {
   }
   html { scroll-behavior: auto; }
   .marquee__track { animation: none; }
-  .t-typed { width: auto; }
+  .js .t-typed { width: auto; }
 }

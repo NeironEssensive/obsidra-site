@@ -53,6 +53,12 @@
     });
   });
 
+  /* ---------- Порядок анимаций внутри групп ---------- */
+  // Через JS, а не style="--i:…" в разметке: CSP запрещает inline-стили, а CSSOM — нет
+  document.querySelectorAll('[data-stagger]').forEach((group) => {
+    [...group.children].forEach((el, i) => el.style.setProperty('--i', String(i)));
+  });
+
   /* ---------- Появление при скролле ---------- */
   const revealEls = [...document.querySelectorAll('[data-reveal]')];
   revealEls.forEach((el) => {
