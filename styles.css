@@ -1043,6 +1043,8 @@ h1, h2, h3 {
 .footer__nav a { color: var(--muted); font-size: 15px; text-decoration: none; transition: color .2s; }
 .footer__nav a:hover { color: var(--text); }
 .footer__copy { margin: 0; font-size: 14px; color: var(--dim); }
+.footer__copy a { color: inherit; text-underline-offset: 3px; transition: color .2s; }
+.footer__copy a:hover { color: var(--text); }
 
 .footer__mega {
   margin: 56px 0 0;
@@ -1059,6 +1061,65 @@ h1, h2, h3 {
   user-select: none;
   transform: translateY(14%);
 }
+
+/* ---------- Страница документа (privacy.html) ---------- */
+
+.legal-back {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color .2s;
+}
+.legal-back:hover { color: var(--text); }
+
+.legal { padding: calc(var(--header-h) + 64px) 0 96px; }
+.legal__inner { max-width: 820px; }
+.legal__title { margin: 0; font-size: clamp(1.9rem, 4.6vw, 3.2rem); line-height: 1.08; }
+.legal__meta { margin: 16px 0 0; font: 400 13px/1.4 var(--font-mono); color: var(--dim); }
+
+.legal__summary {
+  margin: 44px 0 56px;
+  padding: 28px 32px;
+  border: 1px solid rgba(255, 90, 31, .25);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255, 90, 31, .07), rgba(255, 90, 31, .02)), var(--surface);
+}
+.legal__summary h2 { margin: 0 0 14px; font-size: 1.15rem; }
+.legal__summary ul { margin: 0; padding-left: 1.2em; }
+
+.legal__section { padding: 32px 0; border-top: 1px solid var(--line); }
+.legal__section h2 { margin: 0 0 16px; font-size: 1.3rem; line-height: 1.25; }
+.legal__section h2 span { margin-right: 6px; color: var(--ember); }
+.legal__section p,
+.legal__section li { color: var(--muted); }
+.legal__section p { margin: 0 0 14px; }
+.legal__section ul { margin: 0 0 14px; padding-left: 1.2em; }
+.legal__section b { color: var(--text); font-weight: 600; }
+.legal li + li { margin-top: 8px; }
+.legal li::marker { color: var(--ember); }
+
+.legal a {
+  color: var(--ember-2);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 154, 77, .4);
+  text-underline-offset: 3px;
+}
+.legal a:hover { text-decoration-color: currentColor; }
+
+/* то, что владелец сайта должен вписать сам перед публикацией */
+.legal__todo {
+  padding: 1px 6px;
+  border: 1px dashed var(--ember);
+  border-radius: 4px;
+  background: var(--ember-soft);
+  color: var(--ember-2);
+  font-family: var(--font-mono);
+  font-size: .9em;
+}
+
+.legal-page .footer { padding-bottom: 48px; }
 
 /* ---------- Появление при скролле ---------- */
 
@@ -1171,6 +1232,9 @@ h1, h2, h3 {
   .btn--lg { width: 100%; padding: 0 20px; }
 
   .footer__inner { flex-direction: column; align-items: flex-start; }
+
+  .legal { padding-top: calc(var(--header-h) + 40px); }
+  .legal__summary { padding: 22px 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
