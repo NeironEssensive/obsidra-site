@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Страница не найдена — Obsidra</title>
+  <meta name="theme-color" content="#060608">
+  <meta name="robots" content="noindex">
+  <!-- CSP как на главной; скриптов на этой странице нет -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'none'; style-src 'self'; font-src 'self'; img-src 'self' data:; manifest-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!--
+    GitHub Pages отдаёт эту страницу на любой несуществующий адрес, в том числе вложенный (…/obsidra-site/a/b),
+    поэтому все пути — от корня сайта, с префиксом /obsidra-site/. После подключения домена obsidra.dev уберите префикс.
+  -->
+  <link rel="icon" href="/obsidra-site/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/obsidra-site/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/obsidra-site/apple-touch-icon.png">
+  <link rel="manifest" href="/obsidra-site/site.webmanifest">
+  <link rel="stylesheet" href="/obsidra-site/fonts/fonts.css?v=1">
+  <link rel="stylesheet" href="/obsidra-site/styles.css?v=13">
+</head>
+<body class="notfound-page">
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="mark-fill" x1="6" y1="2" x2="26" y2="30" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#3b3746"/>
+        <stop offset=".55" stop-color="#131218"/>
+        <stop offset="1" stop-color="#060608"/>
+      </linearGradient>
+      <linearGradient id="mark-edge" x1="6" y1="30" x2="26" y2="2" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#8b7bff"/>
+        <stop offset="1" stop-color="#7cc4ff"/>
+      </linearGradient>
+    </defs>
+    <symbol id="mark" viewBox="0 0 32 32">
+      <path d="M15 2 25.5 11 21 29.5 9 27.5 5.5 10Z" fill="url(#mark-fill)" stroke="url(#mark-edge)" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M15 2 16.5 15 25.5 11M16.5 15 21 29.5M16.5 15 9 27.5M16.5 15 5.5 10" fill="none" stroke="url(#mark-edge)" stroke-width="1" stroke-opacity=".55" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <header class="header is-scrolled">
+    <div class="container header__inner">
+      <a class="logo" href="/obsidra-site/" aria-label="Obsidra — на главную">
+        <svg class="logo__mark" aria-hidden="true"><use href="#mark"/></svg>
+        <span class="logo__word">OBSIDRA</span>
+      </a>
+      <a class="legal-back" href="/obsidra-site/">← На главную</a>
+    </div>
+  </header>
+
+  <main id="main" class="notfound">
+    <div class="container">
+      <p class="notfound__code" aria-hidden="true">404</p>
+      <h1 class="notfound__title">Такой страницы нет</h1>
+      <p class="notfound__text">Возможно, ссылка устарела или в&nbsp;адресе опечатка. Всё остальное на&nbsp;месте.</p>
+      <div class="notfound__actions">
+        <a class="btn btn--primary" href="/obsidra-site/">
+          На главную
+          <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn--ghost" href="https://t.me/obsidra_bot" target="_blank" rel="noopener">Оставить заявку в&nbsp;боте</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <a class="logo" href="/obsidra-site/" aria-label="Obsidra — на главную">
+          <svg class="logo__mark" aria-hidden="true"><use href="#mark"/></svg>
+          <span class="logo__word">OBSIDRA</span>
+        </a>
+        <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a href="/obsidra-site/#services">Услуги</a>
+          <a href="/obsidra-site/#works">Работы</a>
+          <a href="/obsidra-site/#prices">Цены</a>
+          <a href="https://t.me/obsidra_dev" target="_blank" rel="noopener">Telegram</a>
+        </nav>
+        <p class="footer__copy">© 2026 Obsidra · <a href="/obsidra-site/privacy.html">Политика обработки данных</a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

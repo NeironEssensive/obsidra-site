@@ -10,8 +10,10 @@ styles.css   — стили (цвета и шрифты — в :root в нача
 script.js    — анимации: кристалл в hero, смена слов, подсветка карточек, шаги процесса
 favicon.svg  — иконка вкладки
 privacy.html — политика обработки персональных данных
+404.html     — страница «не найдено»: GitHub Pages отдаёт её на любой несуществующий адрес
+favicon.ico, apple-touch-icon.png, icon-192.png, icon-512.png, site.webmanifest — иконки для старых браузеров и главного экрана телефона
 robots.txt, sitemap.xml — для поисковиков (robots.txt заработает только на своём домене, см. ниже)
-brand/       — avatar.png (аватар Telegram и почты), og-image.png — превью ссылки и его исходник og-image.html
+brand/       — avatar.png (аватар Telegram и почты), og-image.png — превью ссылки; исходники картинок: og-image.html, icon.html
 fonts/       — шрифты (Unbounded, Manrope, JetBrains Mono, лицензия OFL) и fonts.css
 tools/       — fetch_fonts.py: заново скачивает шрифты с Google Fonts
 ```
@@ -69,4 +71,4 @@ python -m http.server 5510
 2. В репозитории: **Settings → Pages → Custom domain → `obsidra.dev` → Save**. GitHub сам добавит в репозиторий файл `CNAME`.
 3. Подождите, пока обновится DNS. Обычно это от нескольких минут до пары часов.
 4. Включите **Enforce HTTPS** в тех же настройках Pages.
-5. Замените адрес `https://neironessensive.github.io/obsidra-site/` на `https://obsidra.dev/` в `index.html` (`canonical`, `og:url`, `og:image`), `sitemap.xml` и `robots.txt`. Пока сайт живёт в подпапке GitHub Pages, поисковики `robots.txt` не видят: они читают его только из корня домена. До покупки домена добавьте `sitemap.xml` вручную в [Яндекс Вебмастере](https://webmaster.yandex.ru/) и [Google Search Console](https://search.google.com/search-console).
+5. Замените адрес `https://neironessensive.github.io/obsidra-site/` на `https://obsidra.dev/` в `index.html` (`canonical`, `og:url`, `og:image`), `sitemap.xml` и `robots.txt`, а в `404.html` замените префикс путей `/obsidra-site/` на `/`. Пока сайт живёт в подпапке GitHub Pages, поисковики `robots.txt` не видят: они читают его только из корня домена. До покупки домена добавьте `sitemap.xml` вручную в [Яндекс Вебмастере](https://webmaster.yandex.ru/) и [Google Search Console](https://search.google.com/search-console).

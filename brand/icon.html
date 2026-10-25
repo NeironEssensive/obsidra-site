@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Obsidra — иконка для главного экрана</title>
+<!--
+  Исходник apple-touch-icon.png (180×180), icon-192.png и icon-512.png.
+  Иконка без прозрачности и без скруглений: iOS и Android скругляют углы сами.
+  Пересобрать: снять скриншот 1024×1024 headless-браузером (см. og-image.html) и уменьшить до нужных размеров.
+-->
+<style>
+  html, body { margin: 0; }
+  body {
+    width: 1024px;
+    height: 1024px;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 100%, rgba(139, 123, 255, .42), transparent 70%),
+      radial-gradient(ellipse 60% 45% at 30% 0%, rgba(124, 196, 255, .12), transparent 70%),
+      #060608;
+  }
+  svg {
+    display: block;
+    width: 620px;
+    height: 620px;
+    margin: 202px auto 0;
+    filter: drop-shadow(0 0 60px rgba(139, 123, 255, .55));
+  }
+</style>
+</head>
+<body>
+  <!-- тот же знак, что в логотипе и favicon.svg -->
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <defs>
+      <linearGradient id="f" x1="6" y1="2" x2="26" y2="30" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#3b3746"/><stop offset=".55" stop-color="#131218"/><stop offset="1" stop-color="#060608"/>
+      </linearGradient>
+      <linearGradient id="e" x1="6" y1="30" x2="26" y2="2" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#8b7bff"/><stop offset="1" stop-color="#7cc4ff"/>
+      </linearGradient>
+    </defs>
+    <path d="M15 2 25.5 11 21 29.5 9 27.5 5.5 10Z" fill="url(#f)" stroke="url(#e)" stroke-width="1.2" stroke-linejoin="round"/>
+    <path d="M15 2 16.5 15 25.5 11M16.5 15 21 29.5M16.5 15 9 27.5M16.5 15 5.5 10" fill="none" stroke="url(#e)" stroke-width=".8" stroke-opacity=".6" stroke-linejoin="round"/>
+  </svg>
+</body>
+</html>
