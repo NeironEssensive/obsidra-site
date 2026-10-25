@@ -27,9 +27,9 @@
   <link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <!-- ?v= меняйте при каждом обновлении CSS/JS, иначе браузеры до 10 минут держат старую версию из кэша -->
   <link rel="stylesheet" href="fonts/fonts.css?v=1">
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=8">
   <script>document.documentElement.classList.add('js');</script>
-  <script src="script.js?v=5" defer></script>
+  <script src="script.js?v=6" defer></script>
 </head>
 <body>
   <!-- Спрайт логотипа: подключается через <use href="#mark"> -->
@@ -67,10 +67,11 @@
         <a href="#stack">Технологии</a>
         <a href="#process">Процесс</a>
         <a href="#faq">Вопросы</a>
-        <a class="btn btn--primary nav__cta" href="https://t.me/obsidra_dev" target="_blank" rel="noopener">Обсудить проект</a>
+        <a class="btn btn--primary nav__cta" href="https://t.me/obsidra_bot" target="_blank" rel="noopener">Обсудить проект</a>
       </nav>
 
-      <a class="btn btn--ghost btn--sm header__cta" href="https://t.me/obsidra_dev" target="_blank" rel="noopener">Обсудить проект</a>
+      <!-- «Обсудить проект» ведёт в бота-брифера: он задаёт 6 вопросов и присылает заявку на @obsidra_dev -->
+      <a class="btn btn--ghost btn--sm header__cta" href="https://t.me/obsidra_bot" target="_blank" rel="noopener">Обсудить проект</a>
 
       <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
         <span></span><span></span>
@@ -99,7 +100,7 @@
         <p class="hero__lead" data-reveal>Obsidra — разработка полного цикла. Проектируем, пишем, запускаем и&nbsp;поддерживаем цифровые продукты: от лендинга до мобильного приложения и&nbsp;игры.</p>
 
         <div class="hero__actions" data-reveal>
-          <a class="btn btn--primary" href="https://t.me/obsidra_dev" target="_blank" rel="noopener">
+          <a class="btn btn--primary" href="https://t.me/obsidra_bot" target="_blank" rel="noopener">
             Обсудить проект
             <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
@@ -669,12 +670,15 @@
         <div class="cta" data-reveal>
           <div class="cta__grid" aria-hidden="true"></div>
           <h2 class="cta__title">Есть идея?<br><span class="grad">Превратим её в&nbsp;продукт.</span></h2>
-          <p class="cta__text">Расскажите о&nbsp;задаче в&nbsp;Telegram — ответим в&nbsp;течение рабочего дня, зададим пару вопросов и&nbsp;предложим решение со&nbsp;сметой.</p>
-          <a class="btn btn--primary btn--lg" href="https://t.me/obsidra_dev" target="_blank" rel="noopener">
-            <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-            Написать в&nbsp;Telegram
-          </a>
-          <p class="cta__handle">@obsidra_dev</p>
+          <p class="cta__text">Оставьте заявку в&nbsp;нашем Telegram-боте: шесть коротких вопросов о&nbsp;задаче, бюджете и&nbsp;сроках — минута времени. Ответим в&nbsp;течение рабочего дня и&nbsp;предложим решение со&nbsp;сметой.</p>
+          <div class="cta__actions">
+            <a class="btn btn--primary btn--lg" href="https://t.me/obsidra_bot" target="_blank" rel="noopener">
+              <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+              Оставить заявку в&nbsp;боте
+            </a>
+            <a class="btn btn--ghost btn--lg" href="https://t.me/obsidra_dev" target="_blank" rel="noopener">Написать лично</a>
+          </div>
+          <p class="cta__handle">@obsidra_bot · @obsidra_dev</p>
         </div>
       </div>
     </section>

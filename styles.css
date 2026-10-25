@@ -1170,6 +1170,7 @@ h1, h2, h3 {
   font-size: 1.1rem;
   color: var(--muted);
 }
+.cta__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 .cta__handle { margin: 18px 0 0; font: 400 14px/1 var(--font-mono); color: var(--dim); }
 
 /* ---------- Подвал ---------- */
@@ -1197,7 +1198,9 @@ h1, h2, h3 {
   margin: 56px 0 0;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(3.4rem, 15.5vw, 15.5rem);
+  /* слово шириной ≈5.6em должно влезать в контейнер (макс. 1192px) при любой ширине окна:
+     вылезшие за блок буквы пропадают — градиент background-clip закрашивает только сам блок */
+  font-size: min(15vw, 12.2rem);
   line-height: .78;
   letter-spacing: -.02em;
   text-align: center;

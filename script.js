@@ -59,6 +59,12 @@
     [...group.children].forEach((el, i) => el.style.setProperty('--i', String(i)));
   });
 
+  /* ---------- Переход по ссылке с якорем ---------- */
+  // Открыли …/#works — сразу ставим страницу на раздел. Иначе из-за scroll-behavior: smooth
+  // браузер проматывает весь сайт от первого экрана, и раздел появляется только через несколько секунд
+  const hashTarget = location.hash.length > 1 && document.getElementById(location.hash.slice(1));
+  if (hashTarget) hashTarget.scrollIntoView({ behavior: 'instant' });
+
   /* ---------- Появление при скролле ---------- */
   const revealEls = [...document.querySelectorAll('[data-reveal]')];
   revealEls.forEach((el) => {
