@@ -208,7 +208,7 @@
     });
 
     const L1 = norm([-0.55, 0.75, -0.5]);   // основной свет: сверху слева
-    const L2 = norm([0.65, -0.55, 0.55]);   // контровой «лавовый» свет снизу справа
+    const L2 = norm([0.65, -0.55, 0.55]);   // контровой фиолетовый свет снизу справа
     const H1 = norm([L1[0], L1[1], L1[2] - 1]);
     const D = 5.2;
 
@@ -250,17 +250,18 @@
       const cy = h / 2;
       const F = size * 0.27 * D;
 
-      // лавовое свечение под кристаллом
+      // фиолетовое свечение под кристаллом
       const glow = ctx.createRadialGradient(cx, cy + size * 0.3, 0, cx, cy + size * 0.3, size * 0.5);
-      glow.addColorStop(0, 'rgba(255, 90, 31, 0.26)');
-      glow.addColorStop(0.45, 'rgba(255, 90, 31, 0.07)');
-      glow.addColorStop(1, 'rgba(255, 90, 31, 0)');
+      glow.addColorStop(0, 'rgba(139, 123, 255, 0.28)');
+      glow.addColorStop(0.45, 'rgba(139, 123, 255, 0.08)');
+      glow.addColorStop(1, 'rgba(139, 123, 255, 0)');
       ctx.fillStyle = glow;
       ctx.fillRect(0, 0, w, h);
 
+      // ледяной ореол над вершиной
       const halo = ctx.createRadialGradient(cx - size * 0.1, cy - size * 0.2, 0, cx, cy - size * 0.2, size * 0.42);
-      halo.addColorStop(0, 'rgba(155, 140, 255, 0.07)');
-      halo.addColorStop(1, 'rgba(155, 140, 255, 0)');
+      halo.addColorStop(0, 'rgba(124, 196, 255, 0.08)');
+      halo.addColorStop(1, 'rgba(124, 196, 255, 0)');
       ctx.fillStyle = halo;
       ctx.fillRect(0, 0, w, h);
 
@@ -307,9 +308,10 @@
         const ir = 0.5 + 0.5 * Math.sin(Math.atan2(n[1], n[0]) * 3 + t * 0.0004);
 
         const rim = Math.pow(d2, 1.6);
-        const r = 7 + d1 * 22 + rim * 235 + s1 * 230 + fres * (ir * 70 + (1 - ir) * 20);
-        const g = 7 + d1 * 21 + rim * 80 + s1 * 215 + fres * (ir * 40 + (1 - ir) * 105);
-        const b = 10 + d1 * 30 + rim * 30 + s1 * 225 + fres * (ir * 150 + (1 - ir) * 115);
+        // контровой свет фиолетовый, а радужный отлив по краям граней переливается от фиолетового ко льду
+        const r = 7 + d1 * 22 + rim * 140 + s1 * 215 + fres * (ir * 90 + (1 - ir) * 25);
+        const g = 7 + d1 * 21 + rim * 118 + s1 * 225 + fres * (ir * 55 + (1 - ir) * 115);
+        const b = 10 + d1 * 30 + rim * 255 + s1 * 240 + fres * (ir * 170 + (1 - ir) * 165);
 
         const p0 = proj[f[0]];
         const p1 = proj[f[1]];
@@ -325,12 +327,12 @@
         ctx.closePath();
         ctx.fillStyle = grad;
         ctx.fill();
-        ctx.strokeStyle = `rgba(255, 196, 160, ${0.05 + s1 * 0.5 + d2 * 0.28})`;
+        ctx.strokeStyle = `rgba(200, 214, 255, ${0.05 + s1 * 0.5 + d2 * 0.28})`;
         ctx.lineWidth = 1;
         ctx.stroke();
       }
 
-      // искры, поднимающиеся от лавы
+      // ледяные искры, поднимающиеся от свечения
       if (sparks.length) {
         ctx.globalCompositeOperation = 'lighter';
         for (let i = 0; i < sparks.length; i++) {
@@ -347,7 +349,7 @@
           const py = cy + s.y * size * 0.5;
           ctx.beginPath();
           ctx.arc(px, py, s.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, ${120 + Math.round(s.life * 80)}, 60, ${a})`;
+          ctx.fillStyle = `rgba(${120 + Math.round(s.life * 70)}, ${180 + Math.round(s.life * 50)}, 255, ${a})`;
           ctx.fill();
         }
         ctx.globalCompositeOperation = 'source-over';
