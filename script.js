@@ -80,6 +80,41 @@
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
+  /* ---------- Работы: фильтр и «Показать ещё» ---------- */
+  const works = document.querySelector('[data-works]');
+  if (works) {
+    const items = [...works.children];
+    const filter = document.querySelector('[data-works-filter]');
+    const more = document.querySelector('[data-works-more]');
+    const moreBtn = more.querySelector('button');
+    const PAGE = 6;
+    let current = 'all';
+    let expanded = false;
+
+    // в режиме «Все» сначала показываем PAGE карточек, у отдельной категории — сразу все
+    const render = () => {
+      const matching = items.filter((el) => current === 'all' || el.dataset.cat === current);
+      const limit = current === 'all' && !expanded ? PAGE : Infinity;
+      items.forEach((el) => { el.hidden = !matching.includes(el) || matching.indexOf(el) >= limit; });
+      more.hidden = matching.length <= limit;
+      moreBtn.textContent = `Показать ещё ${matching.length - PAGE}`;
+    };
+
+    filter.hidden = false;
+    filter.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-filter]');
+      if (!btn) return;
+      current = btn.dataset.filter;
+      filter.querySelectorAll('[data-filter]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      render();
+    });
+    moreBtn.addEventListener('click', () => {
+      expanded = true;
+      render();
+    });
+    render();
+  }
+
   /* ---------- Смена слова в заголовке ---------- */
   const rotator = document.querySelector('.rotator');
   if (rotator && !reduceMotion) {

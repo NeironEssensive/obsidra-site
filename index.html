@@ -27,9 +27,9 @@
   <link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <!-- ?v= меняйте при каждом обновлении CSS/JS, иначе браузеры до 10 минут держат старую версию из кэша -->
   <link rel="stylesheet" href="fonts/fonts.css?v=1">
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
   <script>document.documentElement.classList.add('js');</script>
-  <script src="script.js?v=4" defer></script>
+  <script src="script.js?v=5" defer></script>
 </head>
 <body>
   <!-- Спрайт логотипа: подключается через <use href="#mark"> -->
@@ -246,62 +246,257 @@
     </section>
 
     <!-- ============ РАБОТЫ ============ -->
+    <!-- Концепт-проекты: на каждой карточке пометка «Концепт», чтобы их не принимали за клиентские заказы -->
     <section class="section section--works" id="works">
       <div class="container">
         <div class="section__head" data-reveal>
           <p class="kicker"><span>02</span>Работы</p>
-          <h2 class="section__title">Работы, <em>которые можно проверить</em></h2>
-          <p class="section__lead">Проекты с открытым кодом: можно попробовать в деле и посмотреть, как всё устроено внутри.</p>
+          <h2 class="section__title">Концепт-проекты: <em>как мы решаем задачи</em></h2>
+          <p class="section__lead">Двенадцать продуманных концептов по&nbsp;нашим направлениям. В&nbsp;каждом — какую задачу решает продукт, что у&nbsp;него внутри и&nbsp;на&nbsp;чём он собран.</p>
         </div>
 
-        <article class="case" data-reveal>
-          <div class="case__info">
-            <p class="case__label">Telegram-бот · 2026</p>
-            <h3 class="case__title">Бот-брифер Obsidra</h3>
-            <p class="case__lead">Принимает заявки на разработку без долгой переписки: клиент за минуту отвечает на 6 вопросов, а мы получаем готовую карточку с задачей, бюджетом и сроками.</p>
-            <ul class="case__points">
-              <li>Сценарий на кнопках: любой ответ можно поменять перед отправкой, незаконченная заявка ждёт 24&nbsp;часа</li>
-              <li>Заявки хранятся в&nbsp;PostgreSQL, владельцу приходит карточка со&nbsp;статусами, клиент может отозвать заявку</li>
-              <li>Защита от&nbsp;спама: не&nbsp;больше 3&nbsp;заявок в&nbsp;сутки от&nbsp;одного человека</li>
-              <li>39 автотестов, включая интеграционные с&nbsp;настоящими PostgreSQL и&nbsp;Redis; сборка и&nbsp;тесты в&nbsp;GitHub Actions</li>
-            </ul>
-            <ul class="tags"><li>Java 21</li><li>Spring Boot</li><li>PostgreSQL</li><li>Redis</li><li>Docker</li><li>Testcontainers</li></ul>
-            <div class="case__actions">
-              <a class="btn btn--primary" href="https://t.me/obsidra_bot" target="_blank" rel="noopener">
-                Попробовать в&nbsp;Telegram
-                <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </a>
-              <a class="btn btn--ghost" href="https://github.com/NeironEssensive/obsidra-brief-bot" target="_blank" rel="noopener">Код на&nbsp;GitHub</a>
-            </div>
-          </div>
+        <!-- без JS фильтр не нужен: показываем все карточки сразу -->
+        <div class="works-filter" role="group" aria-label="Показать работы" data-works-filter hidden>
+          <button type="button" data-filter="all" aria-pressed="true">Все <span>12</span></button>
+          <button type="button" data-filter="site" aria-pressed="false">Сайты <span>3</span></button>
+          <button type="button" data-filter="game" aria-pressed="false">Игры <span>3</span></button>
+          <button type="button" data-filter="bot" aria-pressed="false">Telegram-боты <span>3</span></button>
+          <button type="button" data-filter="app" aria-pressed="false">Сервисы и&nbsp;приложения <span>3</span></button>
+        </div>
 
-          <div class="case__visual" aria-hidden="true">
-            <div class="phone">
-              <div class="phone__screen">
-                <div class="phone__bar">
-                  <span class="phone__avatar"><svg><use href="#mark"/></svg></span>
-                  <span>
-                    <span class="phone__name">Obsidra · Заявка на&nbsp;проект</span>
-                    <span class="phone__status">бот</span>
-                  </span>
-                </div>
-                <div class="phone__chat" data-stagger>
-                  <div class="tg-msg tg-msg--bot"><b>1/6.</b> Что нужно сделать?<span class="tg-answer">→ Telegram-бот</span></div>
-                  <div class="tg-msg tg-msg--user">Бот для записи клиентов в&nbsp;барбершоп с&nbsp;напоминаниями</div>
-                  <div class="tg-msg tg-msg--bot">
-                    <b>Проверьте заявку</b><br>
-                    <b>Что сделать:</b> Telegram-бот<br>
-                    <b>Что есть:</b> Дизайн<br>
-                    <b>Бюджет:</b> 20–50 тыс. ₽<br>
-                    <b>Сроки:</b> В&nbsp;течение месяца
-                    <span class="tg-keys"><span class="is-wide">✅ Отправить</span><span>✏️ Изменить</span><span>❌ Отменить</span></span>
-                  </div>
-                  <div class="tg-msg tg-msg--bot">✅ Заявка №33 принята! Ответим в&nbsp;течение рабочего дня.</div>
-                </div>
-              </div>
+        <div class="works" data-works>
+          <article class="card work work--site" data-cat="site" data-reveal>
+            <div class="work__cover" aria-hidden="true">
+              <svg class="work__glyph" viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path d="M6 2v2M10 2v2M14 2v2"/></svg>
+              <span class="work__chip work__chip--top">Кислинка ●●○○○</span>
+              <span class="work__chip">Подписка · раз в&nbsp;2&nbsp;недели</span>
             </div>
-          </div>
-        </article>
+            <div class="work__body">
+              <p class="work__meta"><span class="work__badge">Концепт</span>Сайт · интернет-магазин</p>
+              <h3 class="work__title">Обжарка</h3>
+              <p class="work__text">Магазин свежеобжаренного кофе, где зерно выбирают по&nbsp;вкусу, а&nbsp;не&nbsp;по&nbsp;непонятному названию сорта.</p>
+              <ul class="work__points">
+                <li>Подбор по&nbsp;вкусовому профилю: кислинка, сладость, плотность</li>
+                <li>Подписка на&nbsp;доставку раз в&nbsp;две недели с&nbsp;паузой в&nbsp;один клик</li>
+                <li>Оплата через ЮKassa, каталог меняется из&nbsp;админки</li>
+              </ul>
+              <ul class="tags"><li>Next.js</li><li>TypeScript</li><li>Headless CMS</li><li>ЮKassa</li></ul>
+            </div>
+          </article>
+
+          <article class="card work work--game" data-cat="game" data-reveal>
+            <div class="work__cover" aria-hidden="true">
+              <svg class="work__glyph" viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg>
+              <span class="work__chip work__chip--top">+12 кристаллов</span>
+              <span class="work__chip">Глубина 1&nbsp;240&nbsp;м</span>
+            </div>
+            <div class="work__body">
+              <p class="work__meta"><span class="work__badge">Концепт</span>Игра · браузерная</p>
+              <h3 class="work__title">Обсидиановые копи</h3>
+              <p class="work__text">Idle-игра про шахту: чем глубже спускаешься, тем другие породы, враги и&nbsp;музыка.</p>
+              <ul class="work__points">
+                <li>Добыча идёт, даже когда вкладка закрыта</li>
+                <li>Дерево улучшений и&nbsp;редкие кристаллы на&nbsp;каждой глубине</li>
+                <li>Таблица рекордов с&nbsp;проверкой результатов на&nbsp;сервере</li>
+              </ul>
+              <ul class="tags"><li>Phaser</li><li>TypeScript</li><li>WebGL</li><li>Spring Boot</li></ul>
+            </div>
+          </article>
+
+          <article class="card work work--bot" data-cat="bot" data-reveal>
+            <div class="work__cover" aria-hidden="true">
+              <svg class="work__glyph" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>
+              <span class="work__chip work__chip--top">Свободно: 12:00 · 14:30</span>
+              <span class="work__chip">Напомню за&nbsp;2&nbsp;часа ✂️</span>
+            </div>
+            <div class="work__body">
+              <p class="work__meta"><span class="work__badge">Концепт</span>Telegram-бот · запись</p>
+              <h3 class="work__title">Барбер-бот</h3>
+              <p class="work__text">Запись в&nbsp;барбершоп без звонков: клиент выбирает мастера и&nbsp;время за&nbsp;полминуты.</p>
+              <ul class="work__points">
+                <li>Свободные окна каждого мастера в&nbsp;реальном времени</li>
+                <li>Напоминание за&nbsp;2&nbsp;часа и&nbsp;перенос записи в&nbsp;один тап</li>
+                <li>Мастер видит своё расписание и&nbsp;отмечает визиты прямо в&nbsp;боте</li>
+              </ul>
+              <ul class="tags"><li>Java</li><li>Spring Boot</li><li>PostgreSQL</li><li>Bot API</li></ul>
+            </div>
+          </article>
+
+          <article class="card work work--service" data-cat="app" data-reveal>
+            <div class="work__cover" aria-hidden="true">
+              <svg class="work__glyph" viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+              <span class="work__chip work__chip--top">Кофе 250&nbsp;г · осталось 3</span>
+              <span class="work__chip">Приёмка: 48 позиций</span>
+            </div>
+            <div class="work__body">
+              <p class="work__meta"><span class="work__badge">Концепт</span>Веб-сервис · учёт товаров</p>
+              <h3 class="work__title">Остаток</h3>
+              <p class="work__text">Облачный учёт остатков для небольших магазинов — без таблиц и&nbsp;пересчётов по&nbsp;вечерам.</p>
+              <ul class="work__points">
+                <li>Приёмка товара по&nbsp;штрихкоду с&nbsp;камеры телефона</li>
+                <li>Предупреждение, когда товар заканчивается</li>
+                <li>Роли владельца, продавца и&nbsp;кладовщика</li>
+              </ul>
+              <ul class="tags"><li>Spring Boot</li><li>React</li><li>PostgreSQL</li><li>Redis</li></ul>
+            </div>
+          </article>
+
+          <article class="card work work--site" data-cat="site" data-reveal>
+            <div class="work__cover" aria-hidden="true">
+              <svg class="work__glyph" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-5a3 3 0 0 1 6 0v5"/><path d="M9 10h.01M15 10h.01"/></svg>
+              <span class="work__chip work__chip--top">3D-макет</span>
+              <span class="work__chip">Частный дом · 240&nbsp;м²</span>
+            </div>
+            <div class="work__body">
+              <p class="work__meta"><span class="work__badge">Концепт</span>Сайт · архитектурное бюро</p>
+              <h3 class="work__title">Арка</h3>
+              <p class="work__text">Сайт-портфолио бюро, где проекты смотрят как выставку: крупные фото, планы и&nbsp;короткие истории.</p>
+              <ul class="work__points">
+                <li>Фильтры проектов по&nbsp;типу, году и&nbsp;площади</li>
+                <li>Плавные переходы между страницами и&nbsp;3D-просмотр макета</li>
+                <li>Заявка на&nbsp;консультацию сразу приходит бюро в&nbsp;Telegram</li>
+              </ul>
+              <ul class="tags"><li>Next.js</li><li>Three.js</li><li>GSAP</li><li>Headless CMS</li></ul>
+            </div>
+          </article>
+
+          <article class="card work work--game" data-cat="game" data-reveal>
+            <div class="work__cover" aria-hidden="true">
+              <svg class="work__glyph" viewBox="0 0 24 24"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>
+              <span class="work__chip work__chip--top">Промокод открыт</span>
+              <span class="work__chip">Доставлено: 27</span>
+            </div>
+            <div class="work__body">
+              <p class="work__meta"><span class="work__badge">Концепт</span>Игра · промо для бренда</p>
+              <h3 class="work__title">Курьер</h3>
+              <p class="work__text">Раннер для промо-кампании службы доставки: игрок развозит заказы, а&nbsp;за&nbsp;рекорд получает промокод.</p>
+              <ul class="work__points">
+                <li>Уровни на&nbsp;1–2 минуты, запускается в&nbsp;браузере телефона</li>
+                <li>Каждый промокод выдаётся один раз и&nbsp;проверяется на&nbsp;сервере</li>
+                <li>Рейтинг игроков недели и&nbsp;кнопка «поделиться результатом»</li>
+              </ul>
+              <ul class="tags"><li>Phaser</li><li>WebGL</li><li>Java</li><li>Redis</li></ul>
+            </div>
+          </article>
+
+          <article class="card work work--bot" data-cat="bot" data-reveal>
+            <div class="work__cover" aria-hidden="true">
+              <svg class="work__glyph" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              <span class="work__chip work__chip--top">Курьер в&nbsp;пути</span>
+              <span class="work__chip">Корзина · 2 букета</span>
+            </div>
+            <div class="work__body">
+              <p class="work__meta"><span class="work__badge">Концепт</span>Telegram Mini App · магазин</p>
+              <h3 class="work__title">Букет</h3>
+              <p class="work__text">Цветочный магазин внутри Telegram: каталог, корзина и&nbsp;оплата, не&nbsp;выходя из&nbsp;чата.</p>
+              <ul class="work__points">
+                <li>Витрина с&nbsp;фильтрами по&nbsp;поводу и&nbsp;цене</li>
+                <li>Оплата через Telegram Payments</li>
+                <li>Статусы доставки и&nbsp;фото букета перед отправкой</li>
+              </ul>
+              <ul class="tags"><li>React</li><li>Mini Apps</li><li>Payments</li><li>Spring Boot</li></ul>
+            </div>
+          </article>
+
+          <article class="card work work--mobile" data-cat="app" data-reveal>
+            <div class="work__cover" aria-hidden="true">
+              <svg class="work__glyph" viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg>
+              <span class="work__chip work__chip--top">Посев рассады через 3&nbsp;дня</span>
+              <span class="work__chip">Полить томаты · 18:00</span>
+            </div>
+            <div class="work__body">
+              <p class="work__meta"><span class="work__badge">Концепт</span>Мобильное приложение</p>
+              <h3 class="work__title">Гряда</h3>
+              <p class="work__text">Помощник для дачников: что сажать, когда поливать и&nbsp;чем подкормить — с&nbsp;учётом региона.</p>
+              <ul class="work__points">
+                <li>Календарь посадок под&nbsp;климат вашего региона</li>
+                <li>Напоминания о&nbsp;поливе и&nbsp;подкормке</li>
+                <li>Работает без интернета и&nbsp;синхронизируется, когда появится сеть</li>
+              </ul>
+              <ul class="tags"><li>Flutter</li><li>Dart</li><li>SQLite</li><li>Push</li></ul>
+            </div>
+          </article>
+
+          <article class="card work work--site" data-cat="site" data-reveal>
+            <div class="work__cover" aria-hidden="true">
+              <svg class="work__glyph" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/><path d="M22 10v6"/></svg>
+              <span class="work__chip work__chip--top">Вам подойдёт: Java с&nbsp;нуля</span>
+              <span class="work__chip">Вопрос 3 из&nbsp;5</span>
+            </div>
+            <div class="work__body">
+              <p class="work__meta"><span class="work__badge">Концепт</span>Сайт · онлайн-школа</p>
+              <h3 class="work__title">Линия</h3>
+              <p class="work__text">Лендинг курсов программирования, который сам подбирает программу под уровень ученика.</p>
+              <ul class="work__points">
+                <li>Квиз из&nbsp;5 вопросов вместо длинной формы</li>
+                <li>Тарифы с&nbsp;рассрочкой и&nbsp;сравнением программ</li>
+                <li>Заявки и&nbsp;ответы квиза сразу попадают в&nbsp;amoCRM</li>
+              </ul>
+              <ul class="tags"><li>React</li><li>TypeScript</li><li>Tailwind CSS</li><li>amoCRM API</li></ul>
+            </div>
+          </article>
+
+          <article class="card work work--game" data-cat="game" data-reveal>
+            <div class="work__cover" aria-hidden="true">
+              <svg class="work__glyph" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span class="work__chip work__chip--top">Игрок 2 подключился</span>
+              <span class="work__chip">Уровень 7&nbsp;/&nbsp;30</span>
+            </div>
+            <div class="work__body">
+              <p class="work__meta"><span class="work__badge">Концепт</span>Игра · кооператив на&nbsp;двоих</p>
+              <h3 class="work__title">Два маяка</h3>
+              <p class="work__text">Головоломка для двоих: каждый видит только свою половину уровня, и&nbsp;пройти её можно, только договорившись.</p>
+              <ul class="work__points">
+                <li>Игра по&nbsp;ссылке — без установки и&nbsp;регистрации</li>
+                <li>Синхронизация игроков в&nbsp;реальном времени</li>
+                <li>30 уровней с&nbsp;постепенным усложнением</li>
+              </ul>
+              <ul class="tags"><li>Godot</li><li>WebSocket</li><li>Spring Boot</li><li>Docker</li></ul>
+            </div>
+          </article>
+
+          <article class="card work work--bot" data-cat="bot" data-reveal>
+            <div class="work__cover" aria-hidden="true">
+              <svg class="work__glyph" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+              <span class="work__chip work__chip--top">Найдено 3 ответа</span>
+              <span class="work__chip">Передаю оператору…</span>
+            </div>
+            <div class="work__body">
+              <p class="work__meta"><span class="work__badge">Концепт</span>Telegram-бот · поддержка</p>
+              <h3 class="work__title">Дежурный</h3>
+              <p class="work__text">Бот первой линии поддержки: сам отвечает на&nbsp;частые вопросы, а&nbsp;сложные передаёт человеку.</p>
+              <ul class="work__points">
+                <li>Поиск ответа по&nbsp;базе знаний компании</li>
+                <li>Передача диалога оператору вместе с&nbsp;историей переписки</li>
+                <li>Статистика: о&nbsp;чём спрашивают чаще всего</li>
+              </ul>
+              <ul class="tags"><li>Spring Boot</li><li>PostgreSQL</li><li>Redis</li><li>Bot API</li></ul>
+            </div>
+          </article>
+
+          <article class="card work work--service" data-cat="app" data-reveal>
+            <div class="work__cover" aria-hidden="true">
+              <svg class="work__glyph" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <span class="work__chip work__chip--top">Абонемент: осталось 4</span>
+              <span class="work__chip">Йога · 19:00 · 12&nbsp;/&nbsp;14</span>
+            </div>
+            <div class="work__body">
+              <p class="work__meta"><span class="work__badge">Концепт</span>Веб-сервис · CRM для&nbsp;студий</p>
+              <h3 class="work__title">Пульс</h3>
+              <p class="work__text">Система для фитнес- и&nbsp;танцевальных студий: расписание, абонементы и&nbsp;оплата в&nbsp;одном месте.</p>
+              <ul class="work__points">
+                <li>Онлайн-запись на&nbsp;занятия и&nbsp;лист ожидания</li>
+                <li>Абонементы с&nbsp;автоматическим списанием посещений</li>
+                <li>Напоминания клиентам в&nbsp;Telegram и&nbsp;по&nbsp;SMS</li>
+              </ul>
+              <ul class="tags"><li>Spring Boot</li><li>Kafka</li><li>PostgreSQL</li><li>React</li></ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="works-more" data-works-more hidden>
+          <button type="button" class="btn btn--ghost">Показать ещё</button>
+        </div>
       </div>
     </section>
 
