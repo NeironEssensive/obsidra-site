@@ -28,17 +28,23 @@
   window.matchMedia('(min-width: 861px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
 
   /* ---------- Меню «Обсудить проект» ---------- */
-  const contactMenu = document.querySelector('.contact-menu');
-  if (contactMenu) {
-    const closeContactMenu = () => { contactMenu.open = false; };
-    document.addEventListener('click', (e) => { if (!contactMenu.contains(e.target)) closeContactMenu(); });
-    document.addEventListener('keydown', (e) => {
-      if (e.key !== 'Escape' || !contactMenu.open) return;
-      closeContactMenu();
-      contactMenu.querySelector('summary').focus();
+  // в шапке и на первом экране; открытым может быть только одно
+  const contactMenus = [...document.querySelectorAll('.contact-menu')];
+  contactMenus.forEach((menu) => {
+    menu.addEventListener('toggle', () => {
+      if (menu.open) contactMenus.forEach((other) => { if (other !== menu) other.open = false; });
     });
-    contactMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeContactMenu));
-  }
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => { menu.open = false; }));
+  });
+  document.addEventListener('click', (e) => {
+    contactMenus.forEach((menu) => { if (!menu.contains(e.target)) menu.open = false; });
+  });
+  document.addEventListener('keydown', (e) => {
+    const openMenu = contactMenus.find((menu) => menu.open);
+    if (e.key !== 'Escape' || !openMenu) return;
+    openMenu.open = false;
+    openMenu.querySelector('summary').focus();
+  });
 
   /* ---------- Свечение за курсором ---------- */
   const pointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 };

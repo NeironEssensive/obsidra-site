@@ -36,9 +36,9 @@
   <link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <!-- ?v= меняйте при каждом обновлении CSS/JS, иначе браузеры до 10 минут держат старую версию из кэша -->
   <link rel="stylesheet" href="fonts/fonts.css?v=1">
-  <link rel="stylesheet" href="styles.css?v=11">
+  <link rel="stylesheet" href="styles.css?v=12">
   <script>document.documentElement.classList.add('js');</script>
-  <script src="script.js?v=7" defer></script>
+  <script src="script.js?v=8" defer></script>
 </head>
 <body>
   <!-- Спрайт логотипа: подключается через <use href="#mark"> -->
@@ -129,10 +129,23 @@
         <p class="hero__lead" data-reveal>Obsidra — разработка полного цикла. Проектируем, пишем, запускаем и&nbsp;поддерживаем цифровые продукты: от лендинга до мобильного приложения и&nbsp;игры.</p>
 
         <div class="hero__actions" data-reveal>
-          <a class="btn btn--primary" href="https://t.me/obsidra_bot" target="_blank" rel="noopener">
-            Обсудить проект
-            <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
+          <!-- то же меню выбора, что в шапке, только раскрывается от левого края кнопки -->
+          <details class="contact-menu contact-menu--start">
+            <summary class="btn btn--primary">
+              Обсудить проект
+              <svg class="contact-menu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="contact-menu__panel">
+              <a class="contact-menu__item" href="https://t.me/obsidra_bot" target="_blank" rel="noopener">
+                <span class="contact-menu__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span>
+                <span><b>Заявка в&nbsp;боте</b><small>6 вопросов — минута времени</small></span>
+              </a>
+              <a class="contact-menu__item" href="https://t.me/obsidra_dev" target="_blank" rel="noopener">
+                <span class="contact-menu__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>
+                <span><b>Написать лично</b><small>@obsidra_dev</small></span>
+              </a>
+            </div>
+          </details>
           <a class="btn btn--ghost" href="#services">Что мы делаем</a>
         </div>
 

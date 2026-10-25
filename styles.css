@@ -227,11 +227,11 @@ h1, h2, h3 {
 .nav a:not(.btn):hover { color: var(--text); }
 .nav__cta { display: none; }
 
-/* меню «Обсудить проект» в шапке */
+/* меню «Обсудить проект»: в шапке и на первом экране */
 .contact-menu { position: relative; }
 .contact-menu summary { list-style: none; }
 .contact-menu summary::-webkit-details-marker { display: none; }
-.contact-menu[open] summary { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .2); }
+.contact-menu[open] summary.btn--ghost { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .2); }
 .contact-menu__chevron {
   width: 16px; height: 16px;
   margin-right: -4px;
@@ -253,8 +253,10 @@ h1, h2, h3 {
   border-radius: 18px;
   background: rgba(14, 14, 20, .97);
   box-shadow: 0 24px 60px -20px rgba(0, 0, 0, .9), 0 0 50px -25px rgb(var(--accent-rgb) / .6);
+  z-index: 10;
   animation: menu-in .2s var(--ease);
 }
+.contact-menu--start .contact-menu__panel { right: auto; left: 0; }
 @keyframes menu-in { from { opacity: 0; transform: translateY(-6px); } }
 .contact-menu__item {
   display: flex;
@@ -1460,7 +1462,10 @@ h1, h2, h3 {
 @media (max-width: 720px) {
   .container { padding-inline: 16px; }
 
-  .hero__actions .btn { flex: 1 1 220px; }
+  .hero__actions .btn,
+  .hero__actions .contact-menu { flex: 1 1 220px; }
+  .hero__actions .contact-menu summary { width: 100%; }
+  .hero__actions .contact-menu__panel { width: 100%; }
   .hero__meta {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
