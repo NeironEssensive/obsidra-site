@@ -6,13 +6,22 @@
   <title>Obsidra — разработка сайтов, приложений, игр и Telegram-ботов под ключ</title>
   <meta name="description" content="Obsidra — разработка полного цикла. Сайты, веб-сервисы, мобильные приложения, игры и Telegram-боты под ключ: от идеи до запуска и поддержки.">
   <meta name="theme-color" content="#060608">
-  <link rel="canonical" href="https://obsidra.dev/">
+  <!-- Пока домен obsidra.dev не куплен, адреса ведут на GitHub Pages.
+       После подключения домена замените их здесь, в sitemap.xml и robots.txt -->
+  <link rel="canonical" href="https://neironessensive.github.io/obsidra-site/">
 
+  <!-- превью ссылки в Telegram, VK и мессенджерах; картинка собирается из brand/og-image.html -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://obsidra.dev/">
+  <meta property="og:site_name" content="Obsidra">
+  <meta property="og:url" content="https://neironessensive.github.io/obsidra-site/">
   <meta property="og:title" content="Obsidra — цифровые продукты под ключ">
   <meta property="og:description" content="Сайты, веб-сервисы, мобильные приложения, игры и Telegram-боты. От идеи до продакшена.">
   <meta property="og:locale" content="ru_RU">
+  <meta property="og:image" content="https://neironessensive.github.io/obsidra-site/brand/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Obsidra — сайты, приложения, игры и Telegram-боты под ключ">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!--
     CSP: страница грузит скрипты, стили, шрифты и картинки только с собственного домена.
@@ -27,7 +36,7 @@
   <link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <!-- ?v= меняйте при каждом обновлении CSS/JS, иначе браузеры до 10 минут держат старую версию из кэша -->
   <link rel="stylesheet" href="fonts/fonts.css?v=1">
-  <link rel="stylesheet" href="styles.css?v=9">
+  <link rel="stylesheet" href="styles.css?v=11">
   <script>document.documentElement.classList.add('js');</script>
   <script src="script.js?v=7" defer></script>
 </head>
@@ -66,6 +75,7 @@
         <a href="#works">Работы</a>
         <a href="#stack">Технологии</a>
         <a href="#process">Процесс</a>
+        <a href="#prices">Цены</a>
         <a href="#faq">Вопросы</a>
         <div class="nav__cta">
           <a class="btn btn--primary" href="https://t.me/obsidra_bot" target="_blank" rel="noopener">Оставить заявку в&nbsp;боте</a>
@@ -613,11 +623,98 @@
       </div>
     </section>
 
+    <!-- ============ ЦЕНЫ ============ -->
+    <!-- Цифры — нижняя граница для типовых задач, по рынку фриланса на октябрь 2026. Сроки сверены с ответом в FAQ -->
+    <section class="section" id="prices">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="kicker"><span>05</span>Цены</p>
+          <h2 class="section__title">Сколько стоит — <em>ориентиры</em></h2>
+          <p class="section__lead">Минимальные цены за&nbsp;типовые задачи. Точную сумму называем после брифа и&nbsp;фиксируем в&nbsp;смете: если задача не&nbsp;меняется, не&nbsp;меняется и&nbsp;цена.</p>
+        </div>
+
+        <ul class="prices" data-reveal>
+          <li class="price">
+            <div class="price__info">
+              <h3 class="price__name">Лендинг</h3>
+              <p class="price__text">Одна страница под рекламу или запуск: дизайн, адаптивная вёрстка, заявки сразу в&nbsp;Telegram</p>
+            </div>
+            <p class="price__term">от 7 дней</p>
+            <p class="price__cost"><span>от</span>15&nbsp;000&nbsp;₽</p>
+          </li>
+          <li class="price">
+            <div class="price__info">
+              <h3 class="price__name">Сайт или интернет-магазин</h3>
+              <p class="price__text">До&nbsp;10 разделов или каталог с&nbsp;корзиной и&nbsp;оплатой, админка, чтобы вы сами меняли контент</p>
+            </div>
+            <p class="price__term">от 3 недель</p>
+            <p class="price__cost"><span>от</span>45&nbsp;000&nbsp;₽</p>
+          </li>
+          <li class="price">
+            <div class="price__info">
+              <h3 class="price__name">Telegram-бот</h3>
+              <p class="price__text">Запись, заявки, рассылки, база данных и&nbsp;команды для администратора. С&nbsp;оплатой и&nbsp;CRM — от&nbsp;25&nbsp;000&nbsp;₽</p>
+            </div>
+            <p class="price__term">от 1 недели</p>
+            <p class="price__cost"><span>от</span>8&nbsp;000&nbsp;₽</p>
+          </li>
+          <li class="price">
+            <div class="price__info">
+              <h3 class="price__name">Telegram Mini App</h3>
+              <p class="price__text">Магазин или сервис внутри Telegram: каталог, корзина, оплата и&nbsp;бэкенд с&nbsp;админкой</p>
+            </div>
+            <p class="price__term">от 3 недель</p>
+            <p class="price__cost"><span>от</span>50&nbsp;000&nbsp;₽</p>
+          </li>
+          <li class="price">
+            <div class="price__info">
+              <h3 class="price__name">Веб-сервис или личный кабинет</h3>
+              <p class="price__text">MVP с&nbsp;ролями и&nbsp;правами доступа, платежами и&nbsp;REST API с&nbsp;документацией</p>
+            </div>
+            <p class="price__term">от 1 месяца</p>
+            <p class="price__cost"><span>от</span>80&nbsp;000&nbsp;₽</p>
+          </li>
+          <li class="price">
+            <div class="price__info">
+              <h3 class="price__name">Мобильное приложение</h3>
+              <p class="price__text">iOS и&nbsp;Android на&nbsp;одной кодовой базе: push-уведомления, публикация в&nbsp;App Store, Google Play и&nbsp;RuStore</p>
+            </div>
+            <p class="price__term">от 1,5 месяцев</p>
+            <p class="price__cost"><span>от</span>100&nbsp;000&nbsp;₽</p>
+          </li>
+          <li class="price">
+            <div class="price__info">
+              <h3 class="price__name">Игра</h3>
+              <p class="price__text">Браузерная промо-игра или казуальная мини-игра с&nbsp;таблицей рекордов</p>
+            </div>
+            <p class="price__term">от 3 недель</p>
+            <p class="price__cost"><span>от</span>40&nbsp;000&nbsp;₽</p>
+          </li>
+          <li class="price">
+            <div class="price__info">
+              <h3 class="price__name">Бэкенд, API и&nbsp;интеграции</h3>
+              <p class="price__text">Подключение оплаты, CRM или 1С, REST API для вашего продукта, запуск на&nbsp;сервере</p>
+            </div>
+            <p class="price__term">от 5 дней</p>
+            <p class="price__cost"><span>от</span>10&nbsp;000&nbsp;₽</p>
+          </li>
+        </ul>
+
+        <div class="prices__foot" data-reveal>
+          <p>Доработка и&nbsp;поддержка готовых проектов — от&nbsp;1&nbsp;000&nbsp;₽ в&nbsp;час. Оплата поэтапно: предоплата за&nbsp;первый этап, дальше — по&nbsp;факту сдачи.</p>
+          <a class="btn btn--primary" href="https://t.me/obsidra_bot" target="_blank" rel="noopener">
+            Рассчитать мой проект
+            <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ ПРИНЦИПЫ ============ -->
     <section class="section section--tight" id="principles">
       <div class="container">
         <div class="section__head" data-reveal>
-          <p class="kicker"><span>05</span>Принципы</p>
+          <p class="kicker"><span>06</span>Принципы</p>
           <h2 class="section__title">Правила, по&nbsp;которым <em>мы&nbsp;работаем</em></h2>
         </div>
 
@@ -650,14 +747,14 @@
     <section class="section" id="faq">
       <div class="container faq">
         <div class="faq__head" data-reveal>
-          <p class="kicker"><span>06</span>Вопросы</p>
+          <p class="kicker"><span>07</span>Вопросы</p>
           <h2 class="section__title">Частые <em>вопросы</em></h2>
         </div>
 
         <div class="faq__list" data-reveal>
           <details>
             <summary>Сколько стоит проект?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <p>Зависит от&nbsp;объёма и&nbsp;сложности. После брифа присылаем фиксированную смету с&nbsp;разбивкой по&nbsp;этапам — бесплатно и&nbsp;ни&nbsp;к&nbsp;чему не&nbsp;обязывает.</p>
+            <p>Ориентиры — в&nbsp;разделе <a href="#prices">«Цены»</a>: лендинг от&nbsp;15&nbsp;000&nbsp;₽, Telegram-бот от&nbsp;8&nbsp;000&nbsp;₽. Точную сумму называем после брифа и&nbsp;присылаем фиксированную смету с&nbsp;разбивкой по&nbsp;этапам — бесплатно и&nbsp;ни&nbsp;к&nbsp;чему не&nbsp;обязывает.</p>
           </details>
           <details>
             <summary>Сколько времени займёт разработка?<span class="faq__icon" aria-hidden="true"></span></summary>
@@ -715,10 +812,11 @@
           <a href="#works">Работы</a>
           <a href="#stack">Технологии</a>
           <a href="#process">Процесс</a>
+          <a href="#prices">Цены</a>
           <a href="#faq">Вопросы</a>
           <a href="https://t.me/obsidra_dev" target="_blank" rel="noopener">Telegram</a>
         </nav>
-        <p class="footer__copy">© <span data-year>2026</span> Obsidra · obsidra.dev · <a href="privacy.html">Политика обработки данных</a></p>
+        <p class="footer__copy">© <span data-year>2026</span> Obsidra · <a href="privacy.html">Политика обработки данных</a></p>
       </div>
       <p class="footer__mega" aria-hidden="true">OBSIDRA</p>
     </div>

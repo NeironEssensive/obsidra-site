@@ -1,0 +1,8 @@
+# Поисковики читают robots.txt только из корня домена.
+# Пока сайт открывается по адресу neironessensive.github.io/obsidra-site/, этот файл лежит не в корне и не действует:
+# sitemap.xml нужно добавить вручную в Яндекс Вебмастере и Google Search Console.
+# Заработает после подключения домена obsidra.dev: тогда замените адрес ниже на https://obsidra.dev/sitemap.xml.
+User-agent: *
+Allow: /
+
+Sitemap: https://neironessensive.github.io/obsidra-site/sitemap.xml

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Obsidra — картинка для превью ссылки</title>
+<!--
+  Исходник brand/og-image.png (1200×630) — превью ссылки на сайт в Telegram, VK и мессенджерах.
+  Пересобрать: запустить локальный сервер (см. README) и снять скриншот headless-браузером, например
+  msedge --headless=new --window-size=1200,630 --hide-scrollbars --screenshot=og-image.png http://localhost:5510/brand/og-image.html
+  Кристалл — статичный кадр того же кристалла, что крутится на главной (script.js).
+-->
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+  html, body { margin: 0; }
+  body {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: #060608;
+    color: #efecf4;
+    font-family: 'Manrope', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  canvas { position: absolute; inset: 0; }
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    -webkit-mask-image: radial-gradient(ellipse 55% 85% at 80% 45%, #000, transparent 75%);
+    mask-image: radial-gradient(ellipse 55% 85% at 80% 45%, #000, transparent 75%);
+  }
+  .content {
+    position: absolute;
+    top: 64px; bottom: 64px; left: 80px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font: 600 24px/1 'Unbounded', sans-serif;
+    letter-spacing: .16em;
+  }
+  .logo svg { width: 42px; height: 42px; filter: drop-shadow(0 0 14px rgba(139, 123, 255, .45)); }
+  .eyebrow {
+    margin: auto 0 22px;
+    font: 500 17px/1 'JetBrains Mono', monospace;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #7cc4ff;
+  }
+  h1 {
+    margin: 0;
+    font: 700 58px/1.06 'Unbounded', sans-serif;
+    letter-spacing: -.035em;
+  }
+  .grad {
+    background: linear-gradient(100deg, #8b7bff 0%, #7cc4ff 60%, #d4ecff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .handles { display: flex; gap: 12px; margin-top: 40px; }
+  .handles span {
+    padding: 11px 18px;
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .04);
+    font: 400 19px/1 'JetBrains Mono', monospace;
+    color: #d9d5e3;
+  }
+</style>
+</head>
+<body>
+  <canvas id="c" width="1200" height="630"></canvas>
+  <div class="grid"></div>
+
+  <div class="content">
+    <div class="logo">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <defs>
+          <linearGradient id="f" x1="6" y1="2" x2="26" y2="30" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#3b3746"/><stop offset=".55" stop-color="#131218"/><stop offset="1" stop-color="#060608"/>
+          </linearGradient>
+          <linearGradient id="e" x1="6" y1="30" x2="26" y2="2" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#8b7bff"/><stop offset="1" stop-color="#7cc4ff"/>
+          </linearGradient>
+        </defs>
+        <path d="M15 2 25.5 11 21 29.5 9 27.5 5.5 10Z" fill="url(#f)" stroke="url(#e)" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M15 2 16.5 15 25.5 11M16.5 15 21 29.5M16.5 15 9 27.5M16.5 15 5.5 10" fill="none" stroke="url(#e)" stroke-width="1" stroke-opacity=".55" stroke-linejoin="round"/>
+      </svg>
+      OBSIDRA
+    </div>
+
+    <p class="eyebrow">Разработка полного цикла</p>
+    <h1>Сайты, боты, игры<br>и приложения<br><span class="grad">под ключ</span></h1>
+    <div class="handles"><span>@obsidra_bot</span><span>@obsidra_dev</span></div>
+  </div>
+
+<script>
+  const W = 1200, H = 630;
+  const ctx = document.getElementById('c').getContext('2d');
+
+  function mulberry32(seed) {
+    let a = seed;
+    return () => {
+      a |= 0; a = (a + 0x6d2b79f5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  const norm = (v) => { const l = Math.hypot(...v) || 1; return [v[0] / l, v[1] / l, v[2] / l]; };
+  const normal = (a, b, c) => norm(cross(sub(b, a), sub(c, a)));
+  const centroid = (a, b, c) => [(a[0] + b[0] + c[0]) / 3, (a[1] + b[1] + c[1]) / 3, (a[2] + b[2] + c[2]) / 3];
+  const rgb = (r, g, b) => { const k = (v) => Math.max(0, Math.min(255, Math.round(v))); return `rgb(${k(r)}, ${k(g)}, ${k(b)})`; };
+  function rotate([x, y, z], rx, ry, rz) {
+    let c = Math.cos(ry), s = Math.sin(ry);
+    [x, z] = [x * c + z * s, -x * s + z * c];
+    c = Math.cos(rx); s = Math.sin(rx);
+    [y, z] = [y * c - z * s, y * s + z * c];
+    c = Math.cos(rz); s = Math.sin(rz);
+    [x, y] = [x * c - y * s, x * s + y * c];
+    return [x, y, z];
+  }
+
+  // та же геометрия, что у кристалла на главной
+  const rand = mulberry32(11);
+  const N = 7;
+  const verts = [[0.03, 1.6, 0]];
+  for (let i = 0; i < N; i++) {
+    const a = (i / N) * Math.PI * 2 + (rand() - 0.5) * 0.35;
+    const r = 0.62 + (rand() - 0.5) * 0.14;
+    verts.push([Math.cos(a) * r, 0.46 + (rand() - 0.5) * 0.2, Math.sin(a) * r]);
+  }
+  for (let i = 0; i < N; i++) {
+    const a = ((i + 0.5) / N) * Math.PI * 2 + (rand() - 0.5) * 0.35;
+    const r = 0.76 + (rand() - 0.5) * 0.14;
+    verts.push([Math.cos(a) * r, -0.36 + (rand() - 0.5) * 0.22, Math.sin(a) * r]);
+  }
+  verts.push([-0.05, -1.48, 0.04]);
+  const U = (i) => 1 + (i % N), L = (i) => 1 + N + (i % N), TOP = 0, BOTTOM = 2 * N + 1;
+  const faces = [];
+  for (let i = 0; i < N; i++) {
+    faces.push([TOP, U(i), U(i + 1)], [U(i), L(i), U(i + 1)], [U(i + 1), L(i), L(i + 1)], [BOTTOM, L(i + 1), L(i)]);
+  }
+  faces.forEach((f) => {
+    const n = normal(verts[f[0]], verts[f[1]], verts[f[2]]);
+    if (dot(n, centroid(verts[f[0]], verts[f[1]], verts[f[2]])) < 0) f.reverse();
+  });
+
+  const L1 = norm([-0.55, 0.75, -0.5]);
+  const L2 = norm([0.65, -0.55, 0.55]);
+  const H1 = norm([L1[0], L1[1], L1[2] - 1]);
+  const D = 5.2;
+  const cx = 945, cy = 318, S = 640;
+
+  // фиолетовое свечение под кристаллом и ледяной ореол над ним
+  const glow = ctx.createRadialGradient(cx, cy + S * 0.36, 0, cx, cy + S * 0.36, S * 0.62);
+  glow.addColorStop(0, 'rgba(139, 123, 255, 0.5)');
+  glow.addColorStop(0.35, 'rgba(139, 123, 255, 0.15)');
+  glow.addColorStop(1, 'rgba(139, 123, 255, 0)');
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, W, H);
+  const halo = ctx.createRadialGradient(cx - 60, cy - 180, 0, cx - 40, cy - 160, S * 0.5);
+  halo.addColorStop(0, 'rgba(124, 196, 255, 0.12)');
+  halo.addColorStop(1, 'rgba(124, 196, 255, 0)');
+  ctx.fillStyle = halo;
+  ctx.fillRect(0, 0, W, H);
+
+  const F = S * 0.25 * D;
+  const pts = verts.map((v) => rotate(v, -0.2, 0.95, 0.14));
+  const proj = pts.map((p) => { const k = F / (p[2] + D); return [cx + p[0] * k, cy - p[1] * k]; });
+  const visible = [];
+  for (const f of faces) {
+    const a = pts[f[0]], b = pts[f[1]], c = pts[f[2]];
+    const n = normal(a, b, c);
+    const m = centroid(a, b, c);
+    if (dot(n, [m[0], m[1], m[2] + D]) >= 0) continue;
+    visible.push({ f, n, z: m[2] });
+  }
+  visible.sort((p, q) => q.z - p.z);
+
+  for (const { f, n } of visible) {
+    const d1 = Math.max(0, dot(n, L1));
+    const d2 = Math.max(0, dot(n, L2));
+    const s1 = Math.pow(Math.max(0, dot(n, H1)), 34);
+    const fres = Math.pow(1 - Math.abs(n[2]), 2.2);
+    const ir = 0.5 + 0.5 * Math.sin(Math.atan2(n[1], n[0]) * 3 + 1.2);
+    const rim = Math.pow(d2, 1.6);
+    const r = 7 + d1 * 22 + rim * 140 + s1 * 215 + fres * (ir * 90 + (1 - ir) * 25);
+    const g = 7 + d1 * 21 + rim * 118 + s1 * 225 + fres * (ir * 55 + (1 - ir) * 115);
+    const b = 10 + d1 * 30 + rim * 255 + s1 * 240 + fres * (ir * 170 + (1 - ir) * 165);
+    const p0 = proj[f[0]], p1 = proj[f[1]], p2 = proj[f[2]];
+    const grad = ctx.createLinearGradient(p0[0], p0[1], (p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2);
+    grad.addColorStop(0, rgb(r * 1.18, g * 1.18, b * 1.18));
+    grad.addColorStop(1, rgb(r * 0.72, g * 0.72, b * 0.72));
+    ctx.beginPath();
+    ctx.moveTo(p0[0], p0[1]); ctx.lineTo(p1[0], p1[1]); ctx.lineTo(p2[0], p2[1]);
+    ctx.closePath();
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.strokeStyle = `rgba(200, 214, 255, ${0.08 + s1 * 0.5 + d2 * 0.3})`;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  }
+
+  // ледяные искры
+  ctx.globalCompositeOperation = 'lighter';
+  const sparkRand = mulberry32(5);
+  for (let i = 0; i < 26; i++) {
+    const x = cx + (sparkRand() - 0.5) * S * 0.62;
+    const y = cy + S * 0.12 + sparkRand() * S * 0.3;
+    const life = sparkRand();
+    ctx.beginPath();
+    ctx.arc(x, y, 1.3 + sparkRand() * 2.6, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${120 + Math.round(life * 70)}, ${180 + Math.round(life * 50)}, 255, ${0.35 + life * 0.5})`;
+    ctx.fill();
+  }
+</script>
+</body>
+</html>
