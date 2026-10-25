@@ -227,6 +227,68 @@ h1, h2, h3 {
 .nav a:not(.btn):hover { color: var(--text); }
 .nav__cta { display: none; }
 
+/* меню «Обсудить проект» в шапке */
+.contact-menu { position: relative; }
+.contact-menu summary { list-style: none; }
+.contact-menu summary::-webkit-details-marker { display: none; }
+.contact-menu[open] summary { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .2); }
+.contact-menu__chevron {
+  width: 16px; height: 16px;
+  margin-right: -4px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .25s var(--ease);
+}
+.contact-menu[open] .contact-menu__chevron { transform: rotate(180deg); }
+.contact-menu__panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 290px;
+  padding: 8px;
+  border: 1px solid var(--line-2);
+  border-radius: 18px;
+  background: rgba(14, 14, 20, .97);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, .9), 0 0 50px -25px rgb(var(--accent-rgb) / .6);
+  animation: menu-in .2s var(--ease);
+}
+@keyframes menu-in { from { opacity: 0; transform: translateY(-6px); } }
+.contact-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  transition: background-color .2s;
+}
+.contact-menu__item:hover,
+.contact-menu__item:focus-visible { background: rgba(255, 255, 255, .05); }
+.contact-menu__item b { display: block; font-size: 15px; font-weight: 600; line-height: 1.3; }
+.contact-menu__item small { display: block; font-size: 13px; line-height: 1.4; color: var(--muted); }
+.contact-menu__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px; height: 40px;
+  border: 1px solid rgb(var(--accent-rgb) / .25);
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent-2);
+}
+.contact-menu__icon svg {
+  width: 20px; height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .burger {
   display: none;
   width: 44px; height: 44px;
@@ -1326,7 +1388,7 @@ h1, h2, h3 {
     font-size: 1.6rem;
     color: var(--text);
   }
-  .nav__cta { display: inline-flex; margin-top: 28px; }
+  .nav__cta { display: grid; gap: 12px; margin-top: 28px; }
 
   .hero { min-height: auto; padding-top: calc(var(--header-h) + 40px); }
   .hero__crystal {

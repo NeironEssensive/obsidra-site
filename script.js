@@ -27,6 +27,19 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
   window.matchMedia('(min-width: 861px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
 
+  /* ---------- Меню «Обсудить проект» ---------- */
+  const contactMenu = document.querySelector('.contact-menu');
+  if (contactMenu) {
+    const closeContactMenu = () => { contactMenu.open = false; };
+    document.addEventListener('click', (e) => { if (!contactMenu.contains(e.target)) closeContactMenu(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape' || !contactMenu.open) return;
+      closeContactMenu();
+      contactMenu.querySelector('summary').focus();
+    });
+    contactMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeContactMenu));
+  }
+
   /* ---------- Свечение за курсором ---------- */
   const pointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
   if (finePointer && !reduceMotion) {
