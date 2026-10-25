@@ -27,7 +27,7 @@
   <link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <!-- ?v= меняйте при каждом обновлении CSS/JS, иначе браузеры до 10 минут держат старую версию из кэша -->
   <link rel="stylesheet" href="fonts/fonts.css?v=1">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=5">
   <script>document.documentElement.classList.add('js');</script>
   <script src="script.js?v=3" defer></script>
 </head>
@@ -63,6 +63,7 @@
 
       <nav class="nav" id="nav" aria-label="Основная навигация">
         <a href="#services">Услуги</a>
+        <a href="#works">Работы</a>
         <a href="#stack">Технологии</a>
         <a href="#process">Процесс</a>
         <a href="#faq">Вопросы</a>
@@ -244,11 +245,71 @@
       </div>
     </section>
 
+    <!-- ============ РАБОТЫ ============ -->
+    <section class="section section--works" id="works">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="kicker"><span>02</span>Работы</p>
+          <h2 class="section__title">Работы, <em>которые можно проверить</em></h2>
+          <p class="section__lead">Проекты с открытым кодом: можно попробовать в деле и посмотреть, как всё устроено внутри.</p>
+        </div>
+
+        <article class="case" data-reveal>
+          <div class="case__info">
+            <p class="case__label">Telegram-бот · 2026</p>
+            <h3 class="case__title">Бот-брифер Obsidra</h3>
+            <p class="case__lead">Принимает заявки на разработку без долгой переписки: клиент за минуту отвечает на 6 вопросов, а мы получаем готовую карточку с задачей, бюджетом и сроками.</p>
+            <ul class="case__points">
+              <li>Сценарий на кнопках: любой ответ можно поменять перед отправкой, незаконченная заявка ждёт 24&nbsp;часа</li>
+              <li>Заявки хранятся в&nbsp;PostgreSQL, владельцу приходит карточка со&nbsp;статусами, клиент может отозвать заявку</li>
+              <li>Защита от&nbsp;спама: не&nbsp;больше 3&nbsp;заявок в&nbsp;сутки от&nbsp;одного человека</li>
+              <li>39 автотестов, включая интеграционные с&nbsp;настоящими PostgreSQL и&nbsp;Redis; сборка и&nbsp;тесты в&nbsp;GitHub Actions</li>
+            </ul>
+            <ul class="tags"><li>Java 21</li><li>Spring Boot</li><li>PostgreSQL</li><li>Redis</li><li>Docker</li><li>Testcontainers</li></ul>
+            <div class="case__actions">
+              <a class="btn btn--primary" href="https://t.me/obsidra_bot" target="_blank" rel="noopener">
+                Попробовать в&nbsp;Telegram
+                <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a class="btn btn--ghost" href="https://github.com/NeironEssensive/obsidra-brief-bot" target="_blank" rel="noopener">Код на&nbsp;GitHub</a>
+            </div>
+          </div>
+
+          <div class="case__visual" aria-hidden="true">
+            <div class="phone">
+              <div class="phone__screen">
+                <div class="phone__bar">
+                  <span class="phone__avatar"><svg><use href="#mark"/></svg></span>
+                  <span>
+                    <span class="phone__name">Obsidra · Заявка на&nbsp;проект</span>
+                    <span class="phone__status">бот</span>
+                  </span>
+                </div>
+                <div class="phone__chat" data-stagger>
+                  <div class="tg-msg tg-msg--bot"><b>1/6.</b> Что нужно сделать?<span class="tg-answer">→ Telegram-бот</span></div>
+                  <div class="tg-msg tg-msg--user">Бот для записи клиентов в&nbsp;барбершоп с&nbsp;напоминаниями</div>
+                  <div class="tg-msg tg-msg--bot">
+                    <b>Проверьте заявку</b><br>
+                    <b>Что сделать:</b> Telegram-бот<br>
+                    <b>Что есть:</b> Дизайн<br>
+                    <b>Бюджет:</b> 20–50 тыс. ₽<br>
+                    <b>Сроки:</b> В&nbsp;течение месяца
+                    <span class="tg-keys"><span class="is-wide">✅ Отправить</span><span>✏️ Изменить</span><span>❌ Отменить</span></span>
+                  </div>
+                  <div class="tg-msg tg-msg--bot">✅ Заявка №33 принята! Ответим в&nbsp;течение рабочего дня.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- ============ ТЕХНОЛОГИИ ============ -->
     <section class="section section--stack" id="stack">
       <div class="container stack">
         <div class="stack__intro" data-reveal>
-          <p class="kicker"><span>02</span>Технологии</p>
+          <p class="kicker"><span>03</span>Технологии</p>
           <h2 class="section__title">Стек под задачу, <em>а&nbsp;не&nbsp;задача под&nbsp;стек</em></h2>
           <p class="section__lead">Используем проверенные технологии, на&nbsp;которых держатся крупные продукты. Проект легко поддерживать и&nbsp;развивать — даже без нас.</p>
         </div>
@@ -276,7 +337,7 @@
     <section class="section" id="process">
       <div class="container process">
         <div class="process__head" data-reveal>
-          <p class="kicker"><span>03</span>Процесс</p>
+          <p class="kicker"><span>04</span>Процесс</p>
           <h2 class="section__title">Под ключ — <em>это&nbsp;так</em></h2>
           <p class="section__lead">Шесть шагов от&nbsp;первого сообщения до&nbsp;работающего продукта. На&nbsp;каждом этапе вы знаете, что происходит и&nbsp;сколько это стоит.</p>
         </div>
@@ -341,7 +402,7 @@
     <section class="section section--tight" id="principles">
       <div class="container">
         <div class="section__head" data-reveal>
-          <p class="kicker"><span>04</span>Принципы</p>
+          <p class="kicker"><span>05</span>Принципы</p>
           <h2 class="section__title">Правила, по&nbsp;которым <em>мы&nbsp;работаем</em></h2>
         </div>
 
@@ -374,7 +435,7 @@
     <section class="section" id="faq">
       <div class="container faq">
         <div class="faq__head" data-reveal>
-          <p class="kicker"><span>05</span>Вопросы</p>
+          <p class="kicker"><span>06</span>Вопросы</p>
           <h2 class="section__title">Частые <em>вопросы</em></h2>
         </div>
 
@@ -433,6 +494,7 @@
         </a>
         <nav class="footer__nav" aria-label="Навигация в подвале">
           <a href="#services">Услуги</a>
+          <a href="#works">Работы</a>
           <a href="#stack">Технологии</a>
           <a href="#process">Процесс</a>
           <a href="#faq">Вопросы</a>
